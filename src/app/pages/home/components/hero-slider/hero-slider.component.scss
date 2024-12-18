@@ -7,63 +7,7 @@
   opacity: 1;
 }
 
-.text-section {
-  text-align: center;
-}
-
-.typed-cursor {
+::ng-deep .typed-cursor {
   font-weight: bold;
-  color: #59a745;
-}
-
-.text-section {
-  text-align: center;
-}
-
-.slide-title {
-  font-size: 16px;
-  line-height: 20px;
-  margin-bottom: 8px;
-  color: var(--algoseek-color-dark);
-}
-
-.slide-heading {
-  font-size: 40px;
-  font-weight: bold;
-  line-height: 48px;
-  color: var(--algoseek-color-dark);
-}
-
-.slide-subtitle {
-  font-size: 16px;
-  margin-top: 16px;
-  line-height: 20px;
-  color: var(--algoseek-color-darker-gray);
-}
-
-@media (min-width: 640px) {
-  .slide-heading {
-    font-size: 70px;
-    line-height: 90px;
-  }
-
-  .slide-title {
-    font-size: 30px;
-    line-height: 36px;
-  }
-}
-
-@media (min-width: 768px) {
-  .slide-subtitle {
-    font-size: 30px;
-    margin-top: 32px;
-    line-height: 36px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .slide-heading {
-    font-size: 130px;
-    line-height: 160px;
-  }
+  color: var(--algoseek-color-accent);
 }

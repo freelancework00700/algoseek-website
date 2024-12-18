@@ -6,6 +6,21 @@
   font-weight: 700;
   line-height: 110%;
   letter-spacing: -4.2px;
+  @media screen and (max-width: 1024px) {
+    font-size: 90px;
+    line-height: 108%;
+    letter-spacing: -3.62px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 70px;
+    line-height: 104%;
+    letter-spacing: -2.62px;
+  }
+  @media screen and (max-width: 640px) {
+    font-size: 54px;
+    line-height: 102%;
+    letter-spacing: -1.62px;
+  }
 }
 .desktop-heading-h2 {
   font-family: 'Proxima Nova';
@@ -14,6 +29,21 @@
   font-weight: 700;
   line-height: 110%;
   letter-spacing: -0.6px;
+  @media screen and (max-width: 1024px) {
+    font-size: 54px;
+    line-height: 108%;
+    letter-spacing: -0.5px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 48px;
+    line-height: 104%;
+    letter-spacing: -0.4px;
+  }
+  @media screen and (max-width: 640px) {
+    font-size: 40px;
+    line-height: 105%;
+    letter-spacing: -0.4px;
+  }
 }
 .desktop-heading-h3 {
   font-family: 'Proxima Nova';
@@ -28,6 +58,18 @@
   font-style: normal;
   font-weight: 600;
   line-height: 115%;
+  @media screen and (max-width: 1024px) {
+    font-size: 28px;
+    line-height: 114%;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 26px;
+    line-height: 112%;
+  }
+  @media screen and (max-width: 640px) {
+    font-size: 24px;
+    line-height: 110%;
+  }
 }
 .desktop-heading-h6 {
   font-family: 'Proxima Nova';
@@ -35,6 +77,14 @@
   font-style: normal;
   font-weight: 600;
   line-height: 140%;
+  @media screen and (max-width: 1024px) {
+    font-size: 18px;
+    line-height: 130%;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+    line-height: 120%;
+  }
 }
 
 // subheader-text
@@ -44,6 +94,18 @@
   font-style: normal;
   font-weight: 600;
   line-height: 130%;
+  @media screen and (max-width: 1024px) {
+    font-size: 24px;
+    line-height: 120%;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 20px;
+    line-height: 115%;
+  }
+  @media screen and (max-width: 640px) {
+    font-size: 18px;
+    line-height: 110%;
+  }
 }
 
 // Normal-text
@@ -78,9 +140,24 @@
   line-height: normal;
 }
 .theme-button {
+  height: 60px;
   border-radius: 500px;
   background-color: var(--algoseek-color-accent);
   color: var(--algoseek-color-white);
+  @media screen and (max-width: 768px) {
+    height: 48px;
+  }
+}
+.links-button {
+  font-family: 'Proxima Nova';
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  @media screen and (max-width: 1024px) {
+    font-size: 18px;
+    font-weight: 600;
+  }
 }
 
 // colors
@@ -89,4 +166,10 @@
 }
 .greyScale-white {
   color: var(--algoseek-color-white);
+}
+.greyScale-dark {
+  color: var(--algoseek-color-dark);
+}
+.greyScale-darker-grey {
+  color: var(--algoseek-color-darker-gray);
 }
