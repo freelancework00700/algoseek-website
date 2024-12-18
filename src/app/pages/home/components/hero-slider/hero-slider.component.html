@@ -1,0 +1,28 @@
+<div class="swiper h-full">
+  <div class="swiper-wrapper">
+    <!-- loop through slides array -->
+    @for (slide of slides; track $index) {
+      <div class="swiper-slide">
+        <div class="h-full flex justify-center items-center flex-col">
+          <div class="text-section">
+            <div class="slide-title">{{ slide.title }}</div>
+            <!-- 1. use this for without type animation -->
+            <!-- <div class="slide-heading" [innerHTML]="slide.heading"></div> -->
+
+            <!-- 2. use this for only "algoseek." typed animation -->
+            <div class="slide-heading">
+                <span [innerHTML]="slide.heading"></span>
+                <span class="highlight" #typedElement></span>
+            </div>
+              
+            <!-- 3. use this for entire heading as typed animation -->
+            <!-- <div class="slide-heading">
+              <span #typedElement></span>
+            </div> -->
+          </div>
+          <div class="slide-subtitle">{{ slide.subtitle }}</div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

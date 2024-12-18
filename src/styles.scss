@@ -1,3 +1,4 @@
+@use 'swiper/css';
 @use 'assets/scss/variables.scss';
 @use 'assets/scss/algoseek-fonts.scss';
 @tailwind base;
@@ -8,4 +9,13 @@ body {
   margin: 0;
   color: var(--algoseek-color-dark);
   font-family: 'Proxima Nova', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.highlight {
+  color: var(--algoseek-color-accent);
+}
+
+.typed-cursor {
+  font-weight: bold;
+  color: var(--algoseek-color-accent);
 }
