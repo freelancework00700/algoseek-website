@@ -1,0 +1,11 @@
+.stats-bg {
+  background-image: url('../../../../../assets/images/stats_bg.png');
+  height: 550px;
+  width: 100%;
+}
+.line-shape {
+  width: 24px;
+  height: 3px;
+  border-radius: 50px;
+  background: var(--Accent-Green, #59a745);
+}
