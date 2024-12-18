@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'assets/scss/variables.scss';
+@use 'assets/scss/algoseek-fonts.scss';
+
+body {
+  margin: 0;
+  color: var(--algoseek-color-dark);
+  font-family: 'Proxima Nova', Roboto, 'Helvetica Neue', sans-serif;
+}
