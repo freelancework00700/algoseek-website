@@ -1,0 +1,24 @@
+<div class="py-[100px] trusted-brand-container">
+  <div class="container mx-auto">
+    <div class="desktop-heading-h3">Trusted by</div>
+    <div class="desktop-body-text">Our data, technology and services are the go-to for many firms including:</div>
+    <div class="trusted-brand-swiper swiper pt-[42px]">
+      <div class="swiper-wrapper">
+        @for (brand of trustedBrands; track $index) {
+          <div class="swiper-slide">
+            <div class="w-full flex justify-center items-center py-5">
+              <img [src]="brand.image" />
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+</div>

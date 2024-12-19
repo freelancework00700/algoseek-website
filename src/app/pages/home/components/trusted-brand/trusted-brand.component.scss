@@ -1,0 +1,47 @@
+.trusted-brand-container {
+  background: var(
+    --Base-Green-01,
+    linear-gradient(0deg, rgba(246, 250, 245, 0.85) 0%, rgba(246, 250, 245, 0.85) 100%),
+    #fff
+  );
+}
+.swiper-slide {
+  border-right: 1px solid #e6e8eb;
+}
+
+.swiper-button-prev {
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  background-color: black;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('../../../../../assets/images/right-arrow.svg');
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  content: '';
+}
+
+.swiper-button-prev.swiper-button-disabled {
+  background-color: unset;
+  border: 1px solid #1d1d1f;
+  background-image: url('../../../../../assets/images/right-arrow-gray.svg');
+}
+
+.swiper-button-next.swiper-button-disabled {
+  background-color: unset;
+  border: 1px solid #1d1d1f;
+  background-image: url('../../../../../assets/images/left-arrow-gray.svg');
+}
+
+.swiper-button-next {
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  background-color: black;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('../../../../../assets/images/left-arrow.svg');
+}

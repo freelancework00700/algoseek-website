@@ -1,32 +1,23 @@
 <div
-  class="swiper h-full lg:pt-[258px] md:pt-[180px] sm:pt-[100px] pt-[75px] lg:pb-[378px] md:pb-[280px] sm:pb-[170px] pb-[95px]"
+  class="hero-slider-swiper swiper h-full lg:pt-[258px] md:pt-[180px] sm:pt-[100px] pt-[75px] lg:pb-[378px] md:pb-[280px] sm:pb-[170px] pb-[95px]"
 >
-  <div class="swiper-wrapper">
-    <!-- loop through slides array -->
-    @for (slide of slides; track $index) {
-      <div class="swiper-slide">
-        <div class="h-full flex justify-center items-center flex-col">
-          <div class="flex justify-center flex-col items-center lg:gap-3 gap-2">
-            <div class="desktop-subheader greyScale-dark">{{ slide.title }}</div>
-            <div class="flex justify-center flex-col items-center lg:gap-8 gap-4">
-              <!-- 1. use this for without type animation -->
-              <!-- <div class="desktop-heading-h1" [innerHTML]="slide.heading"></div> -->
+  <div class="h-full flex justify-center items-center flex-col">
+    <div class="flex justify-center flex-col items-center lg:gap-3 gap-2">
+      <div class="desktop-subheader greyScale-dark">
+        {{ slides[currentWordIndex].title }}
+      </div>
 
-              <!-- 2. use this for only "algoseek." typed animation -->
-              <div class="desktop-heading-h1 text-center">
-                <span [innerHTML]="slide.heading" class="greyScale-dark"></span>
-                <span class="accent-green" #typedElement></span>
-              </div>
+      <div class="flex justify-center flex-col items-center lg:gap-8 gap-4">
+        <div class="desktop-heading-h1 text-center">
+          <a class="greyScale-dark">Enjoy </a>
+          <a #typedElement class="accent-green"></a>
+          <a><br />Leave data to <a class="accent-green">algoseek.</a></a>
+        </div>
 
-              <!-- 3. use this for entire heading as typed animation -->
-              <!-- <div class="slide-heading">
-              <span #typedElement></span>
-            </div> -->
-              <div class="desktop-subheader greyScale-darker-grey">{{ slide.subtitle }}</div>
-            </div>
-          </div>
+        <div class="desktop-subheader greyScale-darker-grey">
+          Financial data, technology and services.
         </div>
       </div>
-    }
+    </div>
   </div>
 </div>

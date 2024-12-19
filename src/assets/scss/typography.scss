@@ -22,6 +22,11 @@
     letter-spacing: -1.62px;
   }
 }
+
+.desktop-heading-h1 a {
+  font-family: 'Helvetica';
+}
+
 .desktop-heading-h2 {
   font-family: 'Proxima Nova';
   font-size: 60px;
@@ -206,12 +211,19 @@
 .accent-green {
   color: var(--algoseek-color-accent);
 }
+
 .greyScale-white {
   color: var(--algoseek-color-white);
 }
+
 .greyScale-dark {
   color: var(--algoseek-color-dark);
 }
+
+.greyScale-black {
+  color: var(--algoseek-color-black);
+}
+
 .greyScale-darker-grey {
   color: var(--algoseek-color-darker-gray);
 }
@@ -228,4 +240,7 @@
 }
 .bg-greyScale-darker-grey {
   background-color: var(--algoseek-color-darker-gray);
+}
+.greyScale-grey {
+  color: var(--algoseek-color-grayscale-gray);
 }

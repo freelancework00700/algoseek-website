@@ -1,9 +1,13 @@
+import { TypedOptions } from 'typed.js';
+
 // constant for typed.js settings
-export const TYPED_OPTIONS = {
+export const TYPED_OPTIONS: TypedOptions = {
   loop: true,
-  typeSpeed: 50,
-  backSpeed: 30,
+  fadeOut: true,
+  typeSpeed: 80,
+  backSpeed: 50,
   backDelay: 2000,
+  fadeOutDelay: 0,
   showCursor: true,
-  smartBackspace: true,
+  smartBackspace: false,
 };
