@@ -45,6 +45,29 @@
     letter-spacing: -0.4px;
   }
 }
+.desktop-heading-h2 a {
+  font-family: 'Helvetica';
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 110%;
+  letter-spacing: -1.12px;
+  @media screen and (max-width: 1024px) {
+    font-size: 50px;
+    line-height: 108%;
+    letter-spacing: -0.5px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 44px;
+    line-height: 104%;
+    letter-spacing: -0.4px;
+  }
+  @media screen and (max-width: 640px) {
+    font-size: 36px;
+    line-height: 105%;
+    letter-spacing: -0.4px;
+  }
+}
 .desktop-heading-h3 {
   font-family: 'Proxima Nova';
   font-size: 40px;
@@ -104,6 +127,25 @@
   }
   @media screen and (max-width: 640px) {
     font-size: 18px;
+    line-height: 110%;
+  }
+}
+.desktop-subheader a {
+  font-family: 'Helvetica';
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 130%;
+  @media screen and (max-width: 1024px) {
+    font-size: 22px;
+    line-height: 120%;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 18px;
+    line-height: 115%;
+  }
+  @media screen and (max-width: 640px) {
+    font-size: 16px;
     line-height: 110%;
   }
 }
@@ -172,4 +214,18 @@
 }
 .greyScale-darker-grey {
   color: var(--algoseek-color-darker-gray);
+}
+
+// background
+.bg-accent-green {
+  background-color: var(--algoseek-color-accent);
+}
+.bg-greyScale-white {
+  background-color: var(--algoseek-color-white);
+}
+.bg-greyScale-dark {
+  background-color: var(--algoseek-color-dark);
+}
+.bg-greyScale-darker-grey {
+  background-color: var(--algoseek-color-darker-gray);
 }
