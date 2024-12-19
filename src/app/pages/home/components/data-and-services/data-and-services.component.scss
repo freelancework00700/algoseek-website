@@ -1,0 +1,30 @@
+.data-service-bg {
+  position: relative;
+  z-index: 2;
+  &::before {
+    content: '';
+    width: 559px;
+    height: 499px;
+    position: absolute;
+    left: -172px;
+    top: 68px;
+    border-radius: 559px;
+    opacity: 0.2;
+    background: var(--Accent-Green, #59a745);
+    filter: blur(200px);
+    z-index: 1;
+  }
+  &::after {
+    content: '';
+    width: 465px;
+    height: 417px;
+    position: absolute;
+    right: -158px;
+    bottom: -113px;
+    border-radius: 465px;
+    opacity: 0.1;
+    background: var(--Accent-Green, #59a745);
+    filter: blur(125px);
+    z-index: 1;
+  }
+}
