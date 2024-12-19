@@ -1,0 +1,38 @@
+.svg-outline {
+  outline: 1px solid var(--algoseek-color-accent);
+  outline-offset: 3px;
+  border-radius: 30px;
+}
+.dotted-line {
+  content: '';
+  position: absolute;
+  left: 1px;
+  top: 20px;
+  width: 1px;
+  height: 353px;
+  border-left: 2px dashed var(--algoseek-color-accent);
+  @media screen and (max-width: 1535px) {
+    height: 378px;
+  }
+  @media screen and (max-width: 1279px) {
+    height: 313px;
+  }
+  @media screen and (max-width: 1024px) {
+    height: 270px;
+  }
+  @media screen and (max-width: 768px) {
+    height: 218px;
+  }
+  @media screen and (max-width: 562px) {
+    height: 247px;
+  }
+  @media screen and (max-width: 451px) {
+    height: 265px;
+  }
+  @media screen and (max-width: 430px) {
+    height: 280px;
+  }
+  @media screen and (max-width: 382px) {
+    height: 300px;
+  }
+}

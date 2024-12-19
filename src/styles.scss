@@ -13,3 +13,11 @@ body {
   color: var(--algoseek-color-dark);
   font-family: 'Proxima Nova', Roboto, 'Helvetica Neue', sans-serif;
 }
+.container {
+  @media (min-width: 1536px) {
+    max-width: var(--desktop-width);
+  }
+  @media (min-width: 1921px) {
+    max-width: var(--desktop-lg-width);
+  }
+}

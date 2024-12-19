@@ -12,13 +12,16 @@ export class TrustedBrandComponent implements OnInit {
   swiper!: Swiper;
 
   trustedBrands = [
-    { image: '../../../../../assets/images/Trusted-brand1.png' },
-    { image: '../../../../../assets/images/Trusted-brand2.png' },
-    { image: '../../../../../assets/images/Trusted-brand3.png' },
-    { image: '../../../../../assets/images/Trusted-brand4.png' },
-    { image: '../../../../../assets/images/Trusted-brand5.png' },
-    { image: '../../../../../assets/images/Trusted-brand6.png' },
-    { image: '../../../../../assets/images/Trusted-brand7.png' },
+    { image: '../../../../../assets/images/trusted-brand/Trusted-brand1.png' },
+    { image: '../../../../../assets/images/trusted-brand/Trusted-brand2.png' },
+    { image: '../../../../../assets/images/trusted-brand/Trusted-brand3.png' },
+    { image: '../../../../../assets/images/trusted-brand/Trusted-brand4.png' },
+    { image: '../../../../../assets/images/trusted-brand/Trusted-brand5.png' },
+    { image: '../../../../../assets/images/trusted-brand/Trusted-brand6.png' },
+    { image: '../../../../../assets/images/trusted-brand/Trusted-brand7.png' },
+    { image: '../../../../../assets/images/trusted-brand/Trusted-brand1.png' },
+    { image: '../../../../../assets/images/trusted-brand/Trusted-brand2.png' },
+    { image: '../../../../../assets/images/trusted-brand/Trusted-brand3.png' },
   ];
 
   swiperOptions: SwiperOptions = {
