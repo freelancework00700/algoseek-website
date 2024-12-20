@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { HomeService } from '../../../../shared/services/home.service';
 
 @Component({
@@ -7,6 +7,12 @@ import { HomeService } from '../../../../shared/services/home.service';
   templateUrl: './home-stats.component.html',
 })
 export class HomeStatsComponent {
+  @ViewChild('wrapper') wrapper!: ElementRef;
+
+  getElement() {
+    return this.wrapper.nativeElement;
+  }
+
   constructor(private homeService: HomeService) {}
 
   get statsNumbers() {

@@ -4,9 +4,9 @@ import {
   HomeAlgoseekConsoleIcon,
   HomeAlgoseekConsoleIconSection,
 } from '../../core/interfaces';
-import { Component } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { HomeService } from '../../shared/services/home.service';
+import { Component, HostListener, ViewChild } from '@angular/core';
 import { ArdaDBComponent } from './components/arda-db/arda-db.component';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
@@ -50,12 +50,35 @@ import { CoreExtendedReferenceDataComponent } from './components/core-extended-r
   ],
 })
 export class HomeComponent {
+  isScrolled: boolean = false;
   _destroy$ = new Subject<void>();
+  @ViewChild('homeStats', { static: false }) homeStats: any;
 
   constructor(private homeService: HomeService) {}
 
   ngOnInit() {
     this.homePageContentSubscriptions();
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.checkScrollPosition();
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  checkScrollPosition() {
+    if (this.homeStats) {
+      const homeStatElement = this.homeStats.getElement();
+      const homeStatTop = homeStatElement.offsetTop;
+      if (window.scrollY >= homeStatTop) {
+        this.isScrolled = true;
+      } else {
+        this.isScrolled = false;
+      }
+    }
   }
 
   homePageContentSubscriptions() {
