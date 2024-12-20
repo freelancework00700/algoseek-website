@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
+import { HomeService } from '../../shared/services/home.service';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +12,16 @@ export class HeaderComponent {
   menuOpen = false;
   isMobile = false;
 
+  constructor(
+    private homeService: HomeService,
+  ){}
+  
   ngOnInit() {
     this.checkScreenSize();
+  }
+
+  get headerLinks() {
+    return this.homeService.headerLinks.asReadonly();
   }
 
   @HostListener('window:resize')

@@ -1,40 +1,37 @@
 import Typed from 'typed.js';
 import { TYPED_OPTIONS } from '../../../../core/constants';
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, effect, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { HomeService } from '../../../../shared/services/home.service';
+import { HomePageHeroSlider } from '../../../../core/interfaces';
 
 @Component({
   selector: 'app-hero-slider',
   styleUrl: './hero-slider.component.scss',
   templateUrl: './hero-slider.component.html',
 })
-export class HeroSliderComponent implements OnInit, OnDestroy {
+export class HeroSliderComponent implements OnDestroy {
   currentWordIndex: number = 0;
   typedInstance: Typed | null = null;
   @ViewChild('typedElement', { static: true }) typedElement!: ElementRef;
+  slides: HomePageHeroSlider[] = [];
 
-  slides = [
-    {
-      title: 'Trading is exciting, data is grinding.',
-      subtitle: 'Financial data, technology and services.',
-    },
-    {
-      title: 'Math is neat, data is messy.',
-      subtitle: 'Financial data, technology and services.',
-    },
-    {
-      title: 'Coding is logical, data is empirical.',
-      subtitle: 'Financial data, technology and services.',
-    },
-  ];
-
-  ngOnInit() {
-    this.createTypedInstance();
+  constructor(private homeService: HomeService) {
+    effect(() => {
+      this.slides = this.homeService.homePageHeroSlides();
+      if (this.slides && this.slides.length) {
+        this.createTypedInstance();
+      }
+    });
   }
 
   createTypedInstance() {
+    const wordsArray = this.slides.map((slide) => slide.subtitle.split(' ')[1].split(',')[0]);
+
+    const capitalizedWordsArray = wordsArray.map((word) => `${word.charAt(0).toUpperCase() + word.slice(1)},`);
+
     this.typedInstance = new Typed(this.typedElement.nativeElement, {
       ...TYPED_OPTIONS,
-      strings: ['Trading,', 'Math,', 'Coding,'],
+      strings: capitalizedWordsArray,
       preStringTyped: (arrayPos) => {
         this.currentWordIndex = arrayPos;
       },

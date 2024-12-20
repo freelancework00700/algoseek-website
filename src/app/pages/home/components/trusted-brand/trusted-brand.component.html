@@ -9,10 +9,10 @@
       </div>
       <div class="trusted-brand-swiper swiper md:pt-[48px] pt-[28px] sm:pb-[92px]">
         <div class="swiper-wrapper">
-          @for (brand of trustedBrands; track $index) {
+          @for (link of trustedPartners(); track link) {
             <div class="swiper-slide">
               <div class="w-full flex justify-center items-center sm:py-5">
-                <img [src]="brand.image" class="max-sm:h-[40px]" />
+                <img [src]="baseUrl + '/assets/' + link.partner_logo" class="max-sm:h-[40px]" />
               </div>
             </div>
           }

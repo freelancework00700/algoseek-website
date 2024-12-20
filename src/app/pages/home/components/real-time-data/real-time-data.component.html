@@ -3,14 +3,11 @@
     <div class="flex flex-col items-center xl:gap-[80px] md:gap-[60px] gap-[32px] w-full max-xl:px-[16px]">
       <div class="flex flex-col items-center gap-6 max-w-[952px] mx-auto">
         <div class="flex flex-col items-center gap-4 w-full">
-          <div class="desktop-subheader accent-green">Institutional grade, Friendly rate</div>
-          <div class="desktop-heading-h2 greyScale-dark">Real-Time Data</div>
+          <div class="desktop-subheader accent-green">{{ realTimeData()?.subtitle }}</div>
+          <div class="desktop-heading-h2 greyScale-dark">{{ realTimeData()?.title }}</div>
         </div>
         <div class="desktop-body-text-sm greyScale-darker-grey text-center">
-          Built on a founding team with 140 years of collective experience in data and algo-trading, and with over 60%
-          of our dev team holding PhDs, algoseek's market data stands for quality, reliability, and flexibility. Whether
-          you're a quant firm, a market maker, a financial service provider, a big data researcher, a fintech startup,
-          or a corporate treasurer, we are here to deliver customizable real-time data solutions tailored to your needs.
+          {{ realTimeData()?.description }}
         </div>
       </div>
       <div class="sm:grid sm:grid-cols-11 xl:gap-[120px] md:gap-[60px] max-sm:flex max-sm:flex-col gap-[40px] w-full">
@@ -49,19 +46,19 @@
             <div
               class="border h-[72px] w-full rounded-lg flex items-center justify-center flex-col self-stretch line-bottom"
             >
-              <div class="desktop-heading-h6 greyScale-dark">˂ 10us</div>
+              <div class="desktop-heading-h6 greyScale-dark">&lt; 10us</div>
               <div class="desktop-body-label greyScale-grey">Ultra-low-Latency</div>
             </div>
             <div
               class="border h-[72px] w-full rounded-lg flex items-center justify-center flex-col self-stretch line-bottom"
             >
-              <div class="desktop-heading-h6 greyScale-dark">˂ 30us</div>
+              <div class="desktop-heading-h6 greyScale-dark">&lt; 30us</div>
               <div class="desktop-body-label greyScale-grey">Low latency</div>
             </div>
             <div
               class="border h-[72px] w-full rounded-lg flex items-center justify-center flex-col self-stretch line-bottom"
             >
-              <div class="desktop-heading-h6 greyScale-dark">˂ 100us</div>
+              <div class="desktop-heading-h6 greyScale-dark">&lt; 100us</div>
               <div class="desktop-body-label greyScale-grey">Medium latency</div>
             </div>
             <div

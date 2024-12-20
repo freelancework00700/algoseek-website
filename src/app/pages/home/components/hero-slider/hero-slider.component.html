@@ -4,7 +4,7 @@
   <div class="h-full flex justify-center items-center flex-col">
     <div class="flex justify-center flex-col items-center lg:gap-3 gap-2">
       <div class="desktop-subheader greyScale-dark">
-        {{ slides[currentWordIndex].title }}
+        {{ slides[currentWordIndex]?.title }}
       </div>
 
       <div class="flex justify-center flex-col items-center lg:gap-8 gap-4">
@@ -15,7 +15,7 @@
         </div>
 
         <div class="desktop-subheader greyScale-darker-grey">
-          Financial data, technology and services.
+          {{ slides[currentWordIndex]?.description }}
         </div>
       </div>
     </div>

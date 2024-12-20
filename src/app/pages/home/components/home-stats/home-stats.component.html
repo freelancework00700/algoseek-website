@@ -10,38 +10,18 @@
       <div
         class="lg:flex lg:justify-between lg:items-center lg:self-stretch grid sm:grid-cols-2 grid-cols-1 gap-8 w-full"
       >
-        <div class="flex flex-col items-center lg:gap-4 gap-2">
-          <h6 class="desktop-heading-h6 accent-green">Subscribed by</h6>
-          <div class="line-shape"></div>
-          <div class="flex flex-col items-center gap-1">
-            <div class="desktop-heading-h2 greyScale-white">550+</div>
-            <div class="desktop-heading-h6 greyScale-white">INSTITUTIONS</div>
+
+        @for (statsNumber of statsNumbers(); track statsNumber) {
+          <div class="flex flex-col items-center lg:gap-4 gap-2">
+            <h6 class="desktop-heading-h6 accent-green">{{ statsNumber?.description }}</h6>
+            <div class="line-shape"></div>
+            <div class="flex flex-col items-center gap-1">
+              <div class="desktop-heading-h2 greyScale-white">{{ statsNumber?.value }}</div>
+              <div class="desktop-heading-h6 greyScale-white">{{ statsNumber?.suffix }}</div>
+            </div>
           </div>
-        </div>
-        <div class="flex flex-col items-center lg:gap-4 gap-2">
-          <h6 class="desktop-heading-h6 accent-green">Including</h6>
-          <div class="line-shape"></div>
-          <div class="flex flex-col items-center gap-1">
-            <div class="desktop-heading-h2 greyScale-white">200+</div>
-            <div class="desktop-heading-h6 greyScale-white">DATASETS</div>
-          </div>
-        </div>
-        <div class="flex flex-col items-center lg:gap-4 gap-2">
-          <h6 class="desktop-heading-h6 accent-green">Data total</h6>
-          <div class="line-shape"></div>
-          <div class="flex flex-col items-center gap-1">
-            <div class="desktop-heading-h2 greyScale-white">3,000+</div>
-            <div class="desktop-heading-h6 greyScale-white">TERABYTES</div>
-          </div>
-        </div>
-        <div class="flex flex-col items-center lg:gap-4 gap-2">
-          <h6 class="desktop-heading-h6 accent-green">Total live-trading AUM</h6>
-          <div class="line-shape"></div>
-          <div class="flex flex-col items-center gap-1">
-            <div class="desktop-heading-h2 greyScale-white">$350+</div>
-            <div class="desktop-heading-h6 greyScale-white">BILLION</div>
-          </div>
-        </div>
+        }
+
       </div>
     </div>
   </div>

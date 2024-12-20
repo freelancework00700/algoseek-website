@@ -2,6 +2,8 @@ import Swiper from 'swiper';
 import { SwiperOptions } from 'swiper/types';
 import { Component, OnInit } from '@angular/core';
 import { Navigation, Pagination } from 'swiper/modules';
+import { HomeService } from '../../../../shared/services/home.service';
+import { environment } from '../../../../../../environment';
 
 @Component({
   selector: 'app-trusted-brand',
@@ -9,20 +11,17 @@ import { Navigation, Pagination } from 'swiper/modules';
   templateUrl: './trusted-brand.component.html',
 })
 export class TrustedBrandComponent implements OnInit {
-  swiper!: Swiper;
 
-  trustedBrands = [
-    { image: '../../../../../assets/images/trusted-brand/Trusted-brand1.png' },
-    { image: '../../../../../assets/images/trusted-brand/Trusted-brand2.png' },
-    { image: '../../../../../assets/images/trusted-brand/Trusted-brand3.png' },
-    { image: '../../../../../assets/images/trusted-brand/Trusted-brand4.png' },
-    { image: '../../../../../assets/images/trusted-brand/Trusted-brand5.png' },
-    { image: '../../../../../assets/images/trusted-brand/Trusted-brand6.png' },
-    { image: '../../../../../assets/images/trusted-brand/Trusted-brand7.png' },
-    { image: '../../../../../assets/images/trusted-brand/Trusted-brand1.png' },
-    { image: '../../../../../assets/images/trusted-brand/Trusted-brand2.png' },
-    { image: '../../../../../assets/images/trusted-brand/Trusted-brand3.png' },
-  ];
+  swiper!: Swiper;
+  baseUrl: string = environment.apiUrl;
+
+  constructor(
+    private homeService: HomeService,
+  ){}
+
+  get trustedPartners() {
+    return this.homeService.trustedPartners.asReadonly();
+  }
 
   swiperOptions: SwiperOptions = {
     mousewheel: true,

@@ -4,49 +4,23 @@
       <div class="flex flex-col items-center gap-6 max-w-[952px] mx-auto">
         <div class="flex flex-col items-center gap-4 w-full">
           <div class="desktop-subheader accent-green">
-            <a>Professional, Adaptable, Efficient, Cost-effective</a>
+            <a>{{ useCases().subtitle }}</a>
           </div>
           <div class="desktop-heading-h2 greyScale-white text-center">
-            <a
-              >Data & Services<br />
-              for Most Rigorous Use Cases</a
-            >
+            <a [innerHTML]="useCases().title"></a>
           </div>
         </div>
       </div>
       <div class="sm:grid lg:grid-cols-4 grid-cols-2 max-sm:flex max-sm:flex-col gap-6 w-full">
-        <div class="flex items-center greyScale-white text-center w-full relative">
-          <img
-            src="../../../../../assets/images/data-services/data-services-card1.png"
-            alt="data-services-card"
-            class="rounded-2xl w-full xl:h-[350px] md:h-[300px] md:object-cover"
-          />
-          <div class="p-7 pt-0 absolute left-0 w-full bottom-0 desktop-heading-h4">Quant and Algo Trading</div>
-        </div>
-        <div class="flex items-center greyScale-white text-center w-full relative">
-          <img
-            src="../../../../../assets/images/data-services/data-services-card2.png"
-            alt="data-services-card"
-            class="rounded-2xl w-full xl:h-[350px] md:h-[300px] md:object-cover"
-          />
-          <div class="p-7 pt-0 absolute left-0 w-full bottom-0 desktop-heading-h4">Order Routing</div>
-        </div>
-        <div class="flex items-center greyScale-white text-center w-full relative">
-          <img
-            src="../../../../../assets/images/data-services/data-services-card3.png"
-            alt="data-services-card"
-            class="rounded-2xl w-full xl:h-[350px] md:h-[300px] md:object-cover"
-          />
-          <div class="p-7 pt-0 absolute left-0 w-full bottom-0 desktop-heading-h4">Machine Learning</div>
-        </div>
-        <div class="flex items-center greyScale-white text-center w-full relative">
-          <img
-            src="../../../../../assets/images/data-services/data-services-card4.png"
-            alt="data-services-card"
-            class="rounded-2xl w-full xl:h-[350px] md:h-[300px] md:object-cover"
-          />
-          <div class="p-7 pt-0 absolute left-0 w-full bottom-0 desktop-heading-h4">Market Making</div>
-        </div>
+        @for(image of useCases().images; track image) {
+          <div class="flex items-center greyScale-white text-center w-full relative">
+            <img
+              [src]="baseUrl + '/assets/' + image.use_cases_images_id.image"
+              alt="data-services-card"
+              class="rounded-2xl w-full xl:h-[350px] md:h-[300px] md:object-cover"
+            />
+          </div>
+        }
       </div>
     </div>
   </div>

@@ -3,139 +3,51 @@
     <div class="flex flex-col items-center xl:gap-[80px] md:gap-[60px] gap-[32px] w-full max-xl:px-[16px]">
       <div class="flex flex-col items-center gap-6 max-w-[952px] mx-auto">
         <div class="desktop-heading-h2 greyScale-dark text-center">
-          <a>Our Data Offerings</a>
+          <a>{{ dataOfferings().title }}</a>
         </div>
         <div class="desktop-body-text-sm greyScale-darker-grey text-center">
-          Originating from a quantitative hedge fund, our expertise in gathering market and reference data extends back
-          to 2007. We deliver comprehensive coverage across all major U.S. asset classes and exchanges, ensuring data is
-          curated with unparalleled professionalism, efficiency, and meticulous attention to detail. Our premium data
-          products, including the Advanced TAQ Bars, Prime Exchange OHLC and Options TTOB, are highly acclaimed and
-          trusted by quants.
+          {{ dataOfferings().description }}
         </div>
-        <div class="desktop-subheader accent-green text-center">Available as Historical, Daily & Real-time</div>
+        <div class="desktop-subheader accent-green text-center">{{ dataOfferings().subtitle }}</div>
       </div>
       <div class="sm:grid sm:grid-cols-12 xl:gap-[80px] md:gap-[20px] max-sm:flex max-sm:flex-col gap-[40px] w-full">
         <div class="flex flex-col items-center gap-6 flex-1 lg:col-span-4 md:col-span-4 sm:col-span-12">
           <div class="desktop-heading-h4 greyScale-black text-center w-full">Market data</div>
           <div class="flex flex-col items-center gap-5 self-stretch">
-            <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
-              <div class="flex items-center justify-center gap-3 flex-wrap text-center">
-                <img src="../../../../../assets/images/data-offerings/Equities.svg" />
-                <div class="desktop-heading-h6 greyScale-dark">Equities</div>
+            @for (data of dataOfferings().market_data; track data; let last = $last) {
+              <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
+                <div class="flex items-center justify-center gap-3 flex-wrap text-center">
+                  <div [innerHtml]="data.data_offering_icons_id.svg | safeHtml"></div>
+                  <div class="desktop-heading-h6 greyScale-dark">{{ data.data_offering_icons_id.label }}</div>
+                </div>
               </div>
-            </div>
-            <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
-              <div class="flex items-center justify-center gap-3 flex-wrap text-center">
-                <img src="../../../../../assets/images/data-offerings/ETFETN.svg" />
-                <div class="desktop-heading-h6 greyScale-dark">ETF/ETN</div>
-              </div>
-            </div>
-            <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
-              <div class="flex items-center justify-center gap-3 flex-wrap text-center">
-                <img src="../../../../../assets/images/data-offerings/Indices.svg" />
-                <div class="desktop-heading-h6 greyScale-dark">Indices</div>
-              </div>
-            </div>
-            <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
-              <div class="flex items-center justify-center gap-3 flex-wrap text-center">
-                <img src="../../../../../assets/images/data-offerings/EquityOptions.svg" />
-                <div class="desktop-heading-h6 greyScale-dark">Equity Options</div>
-              </div>
-            </div>
-            <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
-              <div class="flex items-center justify-center gap-3 flex-wrap text-center">
-                <img src="../../../../../assets/images/data-offerings/Futures.svg" />
-                <div class="desktop-heading-h6 greyScale-dark">Futures</div>
-              </div>
-            </div>
-            <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
-              <div class="flex items-center justify-center gap-3 flex-wrap text-center">
-                <img src="../../../../../assets/images/data-offerings/FutureOptions.svg" />
-                <div class="desktop-heading-h6 greyScale-dark">Future Options</div>
-              </div>
-            </div>
-            <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
-              <div class="flex items-center justify-center gap-3 flex-wrap text-center">
-                <img src="../../../../../assets/images/data-offerings/CashForex.svg" />
-                <div class="desktop-heading-h6 greyScale-dark">Cash Forex</div>
-              </div>
-            </div>
-            <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center">
-              <div class="flex items-center justify-center gap-3 flex-wrap text-center">
-                <img src="../../../../../assets/images/data-offerings/Cryptocurrencies.svg" />
-                <div class="desktop-heading-h6 greyScale-dark">Cryptocurrencies</div>
-              </div>
-            </div>
+            }
           </div>
         </div>
         <div class="flex flex-col items-center gap-6 flex-1 lg:col-span-4 md:col-span-4 sm:col-span-12">
           <div class="desktop-heading-h4 greyScale-black text-center w-full">Core reference data</div>
           <div class="flex flex-col items-center gap-5 self-stretch">
-            <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
-              <div class="flex items-center justify-center gap-3 flex-wrap text-center">
-                <img src="../../../../../assets/images/data-offerings/EquitiesSecurityMaster.svg" />
-                <div class="desktop-heading-h6 greyScale-dark">Equities Security Master File</div>
+            @for (data of dataOfferings().core_reference_data; track data; let last = $last) {
+              <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
+                <div class="flex items-center justify-center gap-3 flex-wrap text-center">
+                  <div [innerHtml]="data.data_offering_icons_id.svg | safeHtml"></div>
+                  <div class="desktop-heading-h6 greyScale-dark">{{ data.data_offering_icons_id.label }}</div>
+                </div>
               </div>
-            </div>
-            <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
-              <div class="flex items-center justify-center gap-3 flex-wrap text-center">
-                <img src="../../../../../assets/images/data-offerings/OptionsSecurityMaster.svg" />
-                <div class="desktop-heading-h6 greyScale-dark">Options Security Master File</div>
-              </div>
-            </div>
-            <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
-              <div class="flex items-center justify-center gap-3 flex-wrap text-center">
-                <img src="../../../../../assets/images/data-offerings/FuturesSecurityMaster.svg" />
-                <div class="desktop-heading-h6 greyScale-dark">Futures Security Master File</div>
-              </div>
-            </div>
-            <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
-              <div class="flex items-center justify-center gap-3 flex-wrap text-center">
-                <img src="../../../../../assets/images/data-offerings/FullCorporateEvents.svg" />
-                <div class="desktop-heading-h6 greyScale-dark">Full Corporate Events</div>
-              </div>
-            </div>
-            <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center">
-              <div class="flex items-center justify-center gap-3 flex-wrap text-center">
-                <img src="../../../../../assets/images/data-offerings/OptionsGreeksAnalytics.svg" />
-                <div class="desktop-heading-h6 greyScale-dark">Options Greeks and Analytics</div>
-              </div>
-            </div>
+            }
           </div>
         </div>
         <div class="flex flex-col items-center gap-6 flex-1 lg:col-span-4 md:col-span-4 sm:col-span-12">
           <div class="desktop-heading-h4 greyScale-black text-center w-full">Extended reference data</div>
           <div class="flex flex-col items-center gap-5 self-stretch">
-            <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
-              <div class="flex items-center justify-center gap-3 flex-wrap text-center">
-                <img src="../../../../../assets/images/data-offerings/NewsFeed.svg" />
-                <div class="desktop-heading-h6 greyScale-dark">News Feed</div>
+            @for (data of dataOfferings().extended_reference_data; track data; let last = $last) {
+              <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
+                <div class="flex items-center justify-center gap-3 flex-wrap text-center">
+                  <div [innerHtml]="data.data_offering_icons_id.svg | safeHtml"></div>
+                  <div class="desktop-heading-h6 greyScale-dark">{{ data.data_offering_icons_id.label }}</div>
+                </div>
               </div>
-            </div>
-            <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
-              <div class="flex items-center justify-center gap-3 flex-wrap text-center">
-                <img src="../../../../../assets/images/data-offerings/Fundamentals.svg" />
-                <div class="desktop-heading-h6 greyScale-dark">Fundamentals</div>
-              </div>
-            </div>
-            <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
-              <div class="flex items-center justify-center gap-3 flex-wrap text-center">
-                <img src="../../../../../assets/images/data-offerings/IPOsAnnouncements.svg" />
-                <div class="desktop-heading-h6 greyScale-dark">IPOs/Announcements</div>
-              </div>
-            </div>
-            <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
-              <div class="flex items-center justify-center gap-3 flex-wrap text-center">
-                <img src="../../../../../assets/images/data-offerings/IndexCompositions.svg" />
-                <div class="desktop-heading-h6 greyScale-dark">Index Compositions</div>
-              </div>
-            </div>
-            <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center">
-              <div class="flex items-center justify-center gap-3 flex-wrap text-center">
-                <img src="../../../../../assets/images/data-offerings/USMutualFunds.svg" />
-                <div class="desktop-heading-h6 greyScale-dark">US Mutual Funds</div>
-              </div>
-            </div>
+            }
           </div>
         </div>
       </div>

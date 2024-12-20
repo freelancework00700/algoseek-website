@@ -6,11 +6,11 @@
   </div>
   <div class="xl:col-span-4 lg:col-span-5 md:col-span-6 col-span-6">
     <div class="hidden sm:flex items-center justify-between lg:py-[59px] md:py-[40px] py-[28px] md:pl-0 pl-2">
-      <div class="md:text-[18px] text-[16px] leading-[22px] font-bold text-[#1D1D1F] cursor-pointer">Data</div>
-      <div class="md:text-[18px] text-[16px] leading-[22px] font-bold text-[#1D1D1F] cursor-pointer">Services</div>
-      <div class="md:text-[18px] text-[16px] leading-[22px] font-bold text-[#1D1D1F] cursor-pointer">Docs</div>
-      <div class="md:text-[18px] text-[16px] leading-[22px] font-bold text-[#1D1D1F] cursor-pointer">Company</div>
-      <div class="md:text-[18px] text-[16px] leading-[22px] font-bold text-[#1D1D1F] cursor-pointer">Contact</div>
+      @for (link of headerLinks(); track link) {
+        <a class="md:text-[18px] text-[16px] leading-[22px] font-bold text-[#1D1D1F] cursor-pointer">
+          {{ link.label }}
+        </a>
+      }
     </div>
 
     @if (isMobile) {
