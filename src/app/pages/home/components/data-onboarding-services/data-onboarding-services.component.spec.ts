@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DataOnboardingServicesComponent } from './data-onboarding-services.component';
 
 describe('DataOnboardingServicesComponent', () => {
@@ -8,9 +7,8 @@ describe('DataOnboardingServicesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DataOnboardingServicesComponent]
-    })
-    .compileComponents();
+      imports: [DataOnboardingServicesComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DataOnboardingServicesComponent);
     component = fixture.componentInstance;

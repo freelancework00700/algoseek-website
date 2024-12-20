@@ -1,0 +1,30 @@
+.why-algoseek-bg {
+  position: relative;
+  z-index: 2;
+  &::before {
+    content: '';
+    width: 1344px;
+    height: 884px;
+    position: absolute;
+    left: 128px;
+    top: -442px;
+    border-radius: 1344px;
+    opacity: 0.25;
+    background: var(--algoseek-color-accent);
+    mix-blend-mode: lighten;
+    filter: blur(200px);
+    z-index: 1;
+    @media screen and (max-width: 768px) {
+      position: absolute;
+      left: -306px;
+      bottom: -258px;
+      width: 580px;
+      height: 420px;
+      border-radius: 580px;
+      opacity: 0.3;
+      mix-blend-mode: lighten;
+      background: var(--algoseek-color-accent);
+      filter: blur(200px);
+    }
+  }
+}

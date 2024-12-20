@@ -9,9 +9,13 @@ import { Subject, takeUntil } from 'rxjs';
 import { HomeService } from '../../shared/services/home.service';
 import { ArdaDBComponent } from './components/arda-db/arda-db.component';
 import { HeaderComponent } from '../../components/header/header.component';
+import { FooterComponent } from '../../components/footer/footer.component';
 import { HomeStatsComponent } from './components/home-stats/home-stats.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { HeroSliderComponent } from './components/hero-slider/hero-slider.component';
+import { WhyAlgoseekComponent } from './components/why-algoseek/why-algoseek.component';
 import { DataPackagesComponent } from './components/data-packages/data-packages.component';
+import { InfraConnectComponent } from './components/infra-connect/infra-connect.component';
 import { TrustedBrandComponent } from './components/trusted-brand/trusted-brand.component';
 import { RealTimeDataComponent } from './components/real-time-data/real-time-data.component';
 import { DataOfferingsComponent } from './components/data-offerings/data-offerings.component';
@@ -28,11 +32,15 @@ import { CoreExtendedReferenceDataComponent } from './components/core-extended-r
   imports: [
     ArdaDBComponent,
     HeaderComponent,
+    FooterComponent,
+    ContactUsComponent,
     HomeStatsComponent,
     HeroSliderComponent,
+    WhyAlgoseekComponent,
     RealTimeDataComponent,
     TrustedBrandComponent,
     DataPackagesComponent,
+    InfraConnectComponent,
     DataOfferingsComponent,
     DataAndServicesComponent,
     MarketDataTypesComponent,

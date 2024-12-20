@@ -9,6 +9,13 @@
     left: 50%;
     bottom: -21px;
   }
+  &:last-child {
+    &::before {
+      content: '';
+      position: absolute;
+      display: none;
+    }
+  }
 }
 .line-right {
   position: relative;

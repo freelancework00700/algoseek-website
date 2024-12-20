@@ -1,22 +1,19 @@
 import { Component } from '@angular/core';
-import { HomeService } from '../../../../shared/services/home.service';
-import { environment } from '../../../../../../environment';
-import { SafeHtmlPipe } from '../../../../shared/pipes/safeHtmlPipe.pipe';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../../../../environment';
+import { HomeService } from '../../../../shared/services/home.service';
+import { SafeHtmlPipe } from '../../../../shared/pipes/safeHtmlPipe.pipe';
 
 @Component({
   selector: 'app-algoseek-console',
   imports: [CommonModule, SafeHtmlPipe],
+  styleUrl: './algoseek-console.component.scss',
   templateUrl: './algoseek-console.component.html',
-  styleUrl: './algoseek-console.component.scss'
 })
 export class AlgoseekConsoleComponent {
-
   baseUrl: string = environment.apiUrl;
 
-  constructor(
-    private homeService: HomeService,
-  ){}
+  constructor(private homeService: HomeService) {}
 
   get algoseekConsole() {
     return this.homeService.algoseekConsole.asReadonly();
@@ -25,5 +22,4 @@ export class AlgoseekConsoleComponent {
   get hpAlgoseekConsoleIcons() {
     return this.homeService.hpAlgoseekConsoleIcons.asReadonly();
   }
-
 }

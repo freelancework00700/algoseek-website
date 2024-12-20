@@ -4,17 +4,13 @@ import { HomeService } from '../../../../shared/services/home.service';
 
 @Component({
   selector: 'app-data-onboarding-services',
-  imports: [],
+  styleUrl: './data-onboarding-services.component.scss',
   templateUrl: './data-onboarding-services.component.html',
-  styleUrl: './data-onboarding-services.component.scss'
 })
 export class DataOnboardingServicesComponent {
-
   baseUrl: string = environment.apiUrl;
 
-  constructor(
-    private homeService: HomeService,
-  ){}
+  constructor(private homeService: HomeService) {}
 
   get dataAndServices() {
     return this.homeService.dataAndServices.asReadonly();
@@ -23,6 +19,4 @@ export class DataOnboardingServicesComponent {
   get dataAndServicesCards() {
     return this.homeService.dataAndServicesCards.asReadonly();
   }
-
-
 }

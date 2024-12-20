@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AlgoseekConsoleComponent } from './algoseek-console.component';
 
 describe('AlgoseekConsoleComponent', () => {
@@ -8,9 +7,8 @@ describe('AlgoseekConsoleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AlgoseekConsoleComponent]
-    })
-    .compileComponents();
+      imports: [AlgoseekConsoleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AlgoseekConsoleComponent);
     component = fixture.componentInstance;
