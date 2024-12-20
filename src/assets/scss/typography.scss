@@ -217,7 +217,17 @@
   align-items: center;
   gap: 8px;
   border-radius: 500px;
-  border: 2px solid var(--Greyscale-Lighter-grey, #babcbf);
+  border: 2px solid var(--algoseek-color-grayscale-lighter-gray);
+}
+.outline-black-btn {
+  display: flex;
+  height: 60px;
+  padding: 12px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 500px;
+  border: 2px solid var(--algoseek-color-light-gray);
 }
 
 // colors

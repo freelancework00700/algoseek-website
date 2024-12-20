@@ -10,6 +10,8 @@ import { MarketDataTypesComponent } from './components/market-data-types/market-
 import { CoreExtendedReferenceDataComponent } from './components/core-extended-reference-data/core-extended-reference-data.component';
 import { DataPackagesComponent } from './components/data-packages/data-packages.component';
 import { ArdaDBComponent } from './components/arda-db/arda-db.component';
+import { AlgoseekConsoleComponent } from './components/algoseek-console/algoseek-console.component';
+import { DataOnboardingServicesComponent } from './components/data-onboarding-services/data-onboarding-services.component';
 import { HomeService } from '../../shared/services/home.service';
 import { Subject, takeUntil } from 'rxjs';
 import { HeaderData, HomePageStatsNumber } from '../../core/interfaces';
@@ -30,6 +32,8 @@ import { HeaderData, HomePageStatsNumber } from '../../core/interfaces';
     CoreExtendedReferenceDataComponent,
     DataPackagesComponent,
     ArdaDBComponent,
+    AlgoseekConsoleComponent,
+    DataOnboardingServicesComponent,
   ],
 })
 export class HomeComponent {
