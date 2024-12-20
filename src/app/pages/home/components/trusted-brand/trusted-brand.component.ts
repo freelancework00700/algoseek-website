@@ -2,8 +2,8 @@ import Swiper from 'swiper';
 import { SwiperOptions } from 'swiper/types';
 import { Component, OnInit } from '@angular/core';
 import { Navigation, Pagination } from 'swiper/modules';
-import { HomeService } from '../../../../shared/services/home.service';
 import { environment } from '../../../../../../environment';
+import { HomeService } from '../../../../shared/services/home.service';
 
 @Component({
   selector: 'app-trusted-brand',
@@ -11,13 +11,10 @@ import { environment } from '../../../../../../environment';
   templateUrl: './trusted-brand.component.html',
 })
 export class TrustedBrandComponent implements OnInit {
-
   swiper!: Swiper;
   baseUrl: string = environment.apiUrl;
 
-  constructor(
-    private homeService: HomeService,
-  ){}
+  constructor(private homeService: HomeService) {}
 
   get trustedPartners() {
     return this.homeService.trustedPartners.asReadonly();

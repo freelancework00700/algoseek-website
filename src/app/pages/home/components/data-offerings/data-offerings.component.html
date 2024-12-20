@@ -2,15 +2,22 @@
   <div class="container mx-auto">
     <div class="flex flex-col items-center xl:gap-[80px] md:gap-[60px] gap-[32px] w-full max-xl:px-[16px]">
       <div class="flex flex-col items-center gap-6 max-w-[952px] mx-auto">
+        <!-- title -->
         <div class="desktop-heading-h2 greyScale-dark text-center">
           <a>{{ dataOfferings().title }}</a>
         </div>
+
+        <!-- description -->
         <div class="desktop-body-text-sm greyScale-darker-grey text-center">
           {{ dataOfferings().description }}
         </div>
+
+        <!-- subtitle -->
         <div class="desktop-subheader accent-green text-center">{{ dataOfferings().subtitle }}</div>
       </div>
+
       <div class="sm:grid sm:grid-cols-12 xl:gap-[80px] md:gap-[20px] max-sm:flex max-sm:flex-col gap-[40px] w-full">
+        <!-- market data -->
         <div class="flex flex-col items-center gap-6 flex-1 lg:col-span-4 md:col-span-4 sm:col-span-12">
           <div class="desktop-heading-h4 greyScale-black text-center w-full">Market data</div>
           <div class="flex flex-col items-center gap-5 self-stretch">
@@ -24,6 +31,8 @@
             }
           </div>
         </div>
+
+        <!-- core reference data -->
         <div class="flex flex-col items-center gap-6 flex-1 lg:col-span-4 md:col-span-4 sm:col-span-12">
           <div class="desktop-heading-h4 greyScale-black text-center w-full">Core reference data</div>
           <div class="flex flex-col items-center gap-5 self-stretch">
@@ -37,6 +46,8 @@
             }
           </div>
         </div>
+
+        <!-- extended reference data -->
         <div class="flex flex-col items-center gap-6 flex-1 lg:col-span-4 md:col-span-4 sm:col-span-12">
           <div class="desktop-heading-h4 greyScale-black text-center w-full">Extended reference data</div>
           <div class="flex flex-col items-center gap-5 self-stretch">

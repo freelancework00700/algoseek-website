@@ -1,6 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { HomeStatsComponent } from './home-stats.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 describe('HomeStatsComponent', () => {
   let component: HomeStatsComponent;
@@ -8,9 +7,8 @@ describe('HomeStatsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeStatsComponent]
-    })
-    .compileComponents();
+      imports: [HomeStatsComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HomeStatsComponent);
     component = fixture.componentInstance;

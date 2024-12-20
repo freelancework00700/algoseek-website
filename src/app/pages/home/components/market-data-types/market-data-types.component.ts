@@ -2,10 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-market-data-types',
-  imports: [],
+  styleUrl: './market-data-types.component.scss',
   templateUrl: './market-data-types.component.html',
-  styleUrl: './market-data-types.component.scss'
 })
-export class MarketDataTypesComponent {
-
-}
+export class MarketDataTypesComponent {}

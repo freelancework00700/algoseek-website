@@ -25,7 +25,7 @@ export interface HomePageHeroSlider {
 export interface HomePageStatsNumber {
   description: string;
   value: string;
-  suffix: number;
+  suffix: string;
   number: string;
 }
 

@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MarketDataTypesComponent } from './market-data-types.component';
 
 describe('MarketDataTypesComponent', () => {
@@ -8,9 +7,8 @@ describe('MarketDataTypesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MarketDataTypesComponent]
-    })
-    .compileComponents();
+      imports: [MarketDataTypesComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(MarketDataTypesComponent);
     component = fixture.componentInstance;

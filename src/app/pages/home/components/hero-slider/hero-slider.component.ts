@@ -1,8 +1,8 @@
 import Typed from 'typed.js';
 import { TYPED_OPTIONS } from '../../../../core/constants';
-import { Component, effect, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import { HomeService } from '../../../../shared/services/home.service';
 import { HomePageHeroSlider } from '../../../../core/interfaces';
+import { HomeService } from '../../../../shared/services/home.service';
+import { Component, effect, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-hero-slider',
@@ -12,30 +12,32 @@ import { HomePageHeroSlider } from '../../../../core/interfaces';
 export class HeroSliderComponent implements OnDestroy {
   currentWordIndex: number = 0;
   typedInstance: Typed | null = null;
+  slides: HomePageHeroSlider[] | null | undefined = [];
   @ViewChild('typedElement', { static: true }) typedElement!: ElementRef;
-  slides: HomePageHeroSlider[] = [];
 
   constructor(private homeService: HomeService) {
+    // to set the type animation when data load from api
     effect(() => {
       this.slides = this.homeService.homePageHeroSlides();
-      if (this.slides && this.slides.length) {
-        this.createTypedInstance();
-      }
+      this.createTypedInstance();
     });
   }
 
   createTypedInstance() {
-    const wordsArray = this.slides.map((slide) => slide.subtitle.split(' ')[1].split(',')[0]);
+    if (this.slides && this.slides.length) {
+      const capitalizedWordsArray = this.slides
+        .map((slide) => slide.subtitle?.split(' ')[1]?.split(',')[0] || '') // handle potential undefined values
+        .filter((word) => word) // filter out any empty strings
+        .map((word) => `${word.charAt(0).toUpperCase()}${word.slice(1)},`); // capitalize the first letter and append a comma
 
-    const capitalizedWordsArray = wordsArray.map((word) => `${word.charAt(0).toUpperCase() + word.slice(1)},`);
-
-    this.typedInstance = new Typed(this.typedElement.nativeElement, {
-      ...TYPED_OPTIONS,
-      strings: capitalizedWordsArray,
-      preStringTyped: (arrayPos) => {
-        this.currentWordIndex = arrayPos;
-      },
-    });
+      this.typedInstance = new Typed(this.typedElement.nativeElement, {
+        ...TYPED_OPTIONS,
+        strings: capitalizedWordsArray,
+        preStringTyped: (arrayPos) => {
+          this.currentWordIndex = arrayPos;
+        },
+      });
+    }
   }
 
   ngOnDestroy() {

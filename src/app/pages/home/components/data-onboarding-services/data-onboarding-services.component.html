@@ -10,143 +10,149 @@
           </div>
         </div>
       </div>
-      <div class="md:grid grid-cols-5 hidden">
-        <div class="relative">
-          <div class="absolute top-0 left-0 w-full h-full">
-            <div
-              class="flex flex-col justify-center xl:px-[28px] lg:px-3 px-2 xl:py-[48px] lg:py-[24px] md:py-[10px] xl:gap-6 lg:gap-3 md:gap-1 xl:mr-6 md:mr-2 mr-4"
-            >
-              <img
-                [src]="baseUrl + '/assets/' + dataAndServicesCards()[0]?.image_url"
-                class="xl:w-[64px] lg:w-[48px] md:w-[36px] mx-auto"
-              />
-              <div class="text-center desktop-heading-h6 max-lg:text-base greyScale-black">
-                {{ dataAndServicesCards()[0]?.name }}
-              </div>
-            </div>
-          </div>
-          <img src="../../../../../assets/images/data-oboarding/CollectingDataFromThirdPartySources.png" />
-        </div>
-        <div class="relative">
-          <div class="absolute top-0 left-0 w-full h-full">
-            <div
-              class="flex flex-col justify-center xl:px-[28px] lg:px-3 px-2 xl:py-[48px] lg:py-[24px] md:py-[10px] xl:gap-6 lg:gap-3 md:gap-1 xl:mx-6 mx-4"
-            >
-              <img
-                [src]="baseUrl + '/assets/' + dataAndServicesCards()[1]?.image_url"
-                class="xl:w-[64px] lg:w-[48px] md:w-[36px] mx-auto"
-              />
-              <div class="text-center desktop-heading-h6 max-lg:text-base greyScale-black">{{ dataAndServicesCards()[1]?.name }}</div>
-            </div>
-          </div>
-          <img src="../../../../../assets/images/data-oboarding/DataprofilingQA.png" />
-        </div>
-        <div class="relative">
-          <div class="absolute top-0 left-0 w-full h-full">
-            <div
-              class="flex flex-col justify-center xl:px-[28px] lg:px-3 px-2 xl:py-[48px] lg:py-[24px] md:py-[10px] xl:gap-6 lg:gap-3 md:gap-1 xl:mx-6 md:mx-2 mx-4"
-            >
-              <img
-                [src]="baseUrl + '/assets/' + dataAndServicesCards()[2]?.image_url"
-                class="xl:w-[64px] lg:w-[48px] md:w-[36px] mx-auto"
-              />
-              <div class="text-center desktop-heading-h6 max-lg:text-base greyScale-black">
-                {{ dataAndServicesCards()[2]?.name }}
-              </div>
-            </div>
-          </div>
-          <img src="../../../../../assets/images/data-oboarding/Normalization-Cleaning.png" />
-        </div>
-        <div class="col-span-2 relative">
-          <div class="grid grid-cols-2 absolute w-full">
-            <div class="w-full h-full">
+      @if (dataAndServicesCards().length) {
+        <div class="md:grid grid-cols-5 hidden">
+          <div class="relative">
+            <div class="absolute top-0 left-0 w-full h-full">
               <div
-                class="flex flex-col justify-center xl:px-[28px] lg:px-1 px-1 xl:py-[48px] lg:py-[24px] md:py-[10px] xl:gap-6 lg:gap-3 md:gap-1 xl:mx-6 md:mx-2 mx-4"
+                class="flex flex-col justify-center xl:px-[28px] lg:px-3 px-2 xl:py-[48px] lg:py-[24px] md:py-[10px] xl:gap-6 lg:gap-3 md:gap-1 xl:mr-6 md:mr-2 mr-4"
               >
                 <img
-                  [src]="baseUrl + '/assets/' + dataAndServicesCards()[3]?.image_url"
+                  [src]="baseUrl + '/assets/' + dataAndServicesCards()[0].image_url"
                   class="xl:w-[64px] lg:w-[48px] md:w-[36px] mx-auto"
                 />
                 <div class="text-center desktop-heading-h6 max-lg:text-base greyScale-black">
-                  {{ dataAndServicesCards()[3]?.name }}
+                  {{ dataAndServicesCards()[0].name }}
                 </div>
               </div>
             </div>
-            <div class="w-full h-full">
+            <img src="../../../../../assets/images/data-oboarding/CollectingDataFromThirdPartySources.png" />
+          </div>
+          <div class="relative">
+            <div class="absolute top-0 left-0 w-full h-full">
               <div
-                class="flex flex-col justify-center xl:px-[28px] lg:px-3 px-2 lg:pl-[62px] md:pl-10 xl:py-[48px] md:py-[24px] xl:gap-6 lg:gap-3 md:gap-1 xl:mx-6 md:mx-2 mx-4"
+                class="flex flex-col justify-center xl:px-[28px] lg:px-3 px-2 xl:py-[48px] lg:py-[24px] md:py-[10px] xl:gap-6 lg:gap-3 md:gap-1 xl:mx-6 mx-4"
               >
                 <img
-                  [src]="baseUrl + '/assets/' + dataAndServicesCards()[4]?.image_url"
+                  [src]="baseUrl + '/assets/' + dataAndServicesCards()[1].image_url"
                   class="xl:w-[64px] lg:w-[48px] md:w-[36px] mx-auto"
                 />
-                <div class="text-center desktop-heading-h6 max-lg:text-base greyScale-white">{{ dataAndServicesCards()[4]?.name }}</div>
+                <div class="text-center desktop-heading-h6 max-lg:text-base greyScale-black">{{ dataAndServicesCards()[1].name }}</div>
               </div>
             </div>
+            <img src="../../../../../assets/images/data-oboarding/DataprofilingQA.png" />
           </div>
-          <img src="../../../../../assets/images/data-oboarding/deliveryShape.png" />
+          <div class="relative">
+            <div class="absolute top-0 left-0 w-full h-full">
+              <div
+                class="flex flex-col justify-center xl:px-[28px] lg:px-3 px-2 xl:py-[48px] lg:py-[24px] md:py-[10px] xl:gap-6 lg:gap-3 md:gap-1 xl:mx-6 md:mx-2 mx-4"
+              >
+                <img
+                  [src]="baseUrl + '/assets/' + dataAndServicesCards()[2].image_url"
+                  class="xl:w-[64px] lg:w-[48px] md:w-[36px] mx-auto"
+                />
+                <div class="text-center desktop-heading-h6 max-lg:text-base greyScale-black">
+                  {{ dataAndServicesCards()[2].name }}
+                </div>
+              </div>
+            </div>
+            <img src="../../../../../assets/images/data-oboarding/Normalization-Cleaning.png" />
+          </div>
+          <div class="col-span-2 relative">
+            <div class="grid grid-cols-2 absolute w-full">
+              <div class="w-full h-full">
+                <div
+                  class="flex flex-col justify-center xl:px-[28px] lg:px-1 px-1 xl:py-[48px] lg:py-[24px] md:py-[10px] xl:gap-6 lg:gap-3 md:gap-1 xl:mx-6 md:mx-2 mx-4"
+                >
+                  <img
+                    [src]="baseUrl + '/assets/' + dataAndServicesCards()[3].image_url"
+                    class="xl:w-[64px] lg:w-[48px] md:w-[36px] mx-auto"
+                  />
+                  <div class="text-center desktop-heading-h6 max-lg:text-base greyScale-black">
+                    {{ dataAndServicesCards()[3].name }}
+                  </div>
+                </div>
+              </div>
+              <div class="w-full h-full">
+                <div
+                  class="flex flex-col justify-center xl:px-[28px] lg:px-3 px-2 lg:pl-[62px] md:pl-10 xl:py-[48px] md:py-[24px] xl:gap-6 lg:gap-3 md:gap-1 xl:mx-6 md:mx-2 mx-4"
+                >
+                  <img
+                    [src]="baseUrl + '/assets/' + dataAndServicesCards()[4].image_url"
+                    class="xl:w-[64px] lg:w-[48px] md:w-[36px] mx-auto"
+                  />
+                  <div class="text-center desktop-heading-h6 max-lg:text-base greyScale-white">{{ dataAndServicesCards()[4].name }}</div>
+                </div>
+              </div>
+            </div>
+            <img src="../../../../../assets/images/data-oboarding/deliveryShape.png" />
+          </div>
         </div>
-      </div>
-      <div class="md:hidden flex flex-col">
-        <div class="relative">
-          <div class="absolute top-0 left-0 w-full h-full">
-            <div class="flex flex-col justify-center px-4 pt-6 pb-8 gap-3">
-              <img
-                [src]="baseUrl + '/assets/' + dataAndServicesCards()[0]?.image_url"
-                class="w-[48px] mx-auto"
-              />
-              <div class="text-center desktop-heading-h6 greyScale-black">
-                {{ dataAndServicesCards()[0]?.name }}
+      }
+
+      @if (dataAndServicesCards().length) {
+        <div class="md:hidden flex flex-col">
+          <div class="relative">
+            <div class="absolute top-0 left-0 w-full h-full">
+              <div class="flex flex-col justify-center px-4 pt-6 pb-8 gap-3">
+                <img
+                  [src]="baseUrl + '/assets/' + dataAndServicesCards()[0].image_url"
+                  class="w-[48px] mx-auto"
+                />
+                <div class="text-center desktop-heading-h6 greyScale-black">
+                  {{ dataAndServicesCards()[0].name }}
+                </div>
               </div>
             </div>
+            <img src="../../../../../assets/images/data-oboarding/CollectingData_mobile.png" />
           </div>
-          <img src="../../../../../assets/images/data-oboarding/CollectingData_mobile.png" />
+          <div class="relative">
+            <div class="absolute top-0 left-0 w-full h-full">
+              <div class="flex flex-col justify-center px-4 pt-16 max-[375px]:pt-14 pb-8 gap-3">
+                <img [src]="baseUrl + '/assets/' + dataAndServicesCards()[1].image_url" class="w-[48px] mx-auto" />
+                <div class="text-center desktop-heading-h6 greyScale-black">
+                  {{ dataAndServicesCards()[1].name }}
+                </div>
+              </div>
+            </div>
+            <img src="../../../../../assets/images/data-oboarding/DataprofilingQA_mobile.png" />
+          </div>
+          <div class="relative">
+            <div class="absolute top-0 left-0 w-full h-full">
+              <div class="flex flex-col justify-center px-4 pt-16 max-[375px]:pt-14 pb-8 gap-3">
+                <img
+                  [src]="baseUrl + '/assets/' + dataAndServicesCards()[2].image_url"
+                  class="w-[48px] mx-auto"
+                />
+                <div class="text-center desktop-heading-h6 greyScale-black">
+                  {{ dataAndServicesCards()[2].name }}
+                </div>
+              </div>
+            </div>
+            <img src="../../../../../assets/images/data-oboarding/Normalization-Cleaning_mobile.png" />
+          </div>
+          <div class="relative">
+            <div class="absolute top-0 left-0 w-full">
+              <div class="flex flex-col justify-center px-4 pt-16 max-[375px]:pt-14 pb-8 gap-3">
+                <img [src]="baseUrl + '/assets/' + dataAndServicesCards()[3].image_url" class="w-[48px] mx-auto" />
+                <div class="text-center desktop-heading-h6 greyScale-black">
+                  {{ dataAndServicesCards()[3].name }}
+                </div>
+              </div>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full">
+              <div class="flex flex-col justify-center px-4 pt-16 pb-8 gap-3">
+                <img [src]="baseUrl + '/assets/' + dataAndServicesCards()[4].image_url" class="w-[48px] mx-auto" />
+                <div class="text-center desktop-heading-h6 greyScale-white">
+                  {{ dataAndServicesCards()[4].name }}
+                </div>
+              </div>
+            </div>
+            <img src="../../../../../assets/images/data-oboarding/deliveryShape_mobile.png" />
+          </div>
         </div>
-        <div class="relative">
-          <div class="absolute top-0 left-0 w-full h-full">
-            <div class="flex flex-col justify-center px-4 pt-16 max-[375px]:pt-14 pb-8 gap-3">
-              <img [src]="baseUrl + '/assets/' + dataAndServicesCards()[1]?.image_url" class="w-[48px] mx-auto" />
-              <div class="text-center desktop-heading-h6 greyScale-black">
-                {{ dataAndServicesCards()[1]?.name }}
-              </div>
-            </div>
-          </div>
-          <img src="../../../../../assets/images/data-oboarding/DataprofilingQA_mobile.png" />
-        </div>
-        <div class="relative">
-          <div class="absolute top-0 left-0 w-full h-full">
-            <div class="flex flex-col justify-center px-4 pt-16 max-[375px]:pt-14 pb-8 gap-3">
-              <img
-                [src]="baseUrl + '/assets/' + dataAndServicesCards()[2]?.image_url"
-                class="w-[48px] mx-auto"
-              />
-              <div class="text-center desktop-heading-h6 greyScale-black">
-                {{ dataAndServicesCards()[2]?.name }}
-              </div>
-            </div>
-          </div>
-          <img src="../../../../../assets/images/data-oboarding/Normalization-Cleaning_mobile.png" />
-        </div>
-        <div class="relative">
-          <div class="absolute top-0 left-0 w-full">
-            <div class="flex flex-col justify-center px-4 pt-16 max-[375px]:pt-14 pb-8 gap-3">
-              <img [src]="baseUrl + '/assets/' + dataAndServicesCards()[3]?.image_url" class="w-[48px] mx-auto" />
-              <div class="text-center desktop-heading-h6 greyScale-black">
-                {{ dataAndServicesCards()[3]?.name }}
-              </div>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 w-full">
-            <div class="flex flex-col justify-center px-4 pt-16 pb-8 gap-3">
-              <img [src]="baseUrl + '/assets/' + dataAndServicesCards()[4]?.image_url" class="w-[48px] mx-auto" />
-              <div class="text-center desktop-heading-h6 greyScale-white">
-                {{ dataAndServicesCards()[4]?.name }}
-              </div>
-            </div>
-          </div>
-          <img src="../../../../../assets/images/data-oboarding/deliveryShape_mobile.png" />
-        </div>
-      </div>
+      }
+
       <div class="flex flex-col items-center gap-6 max-w-[952px] mx-auto">
         <div class="desktop-body-text-sm greyScale-darker-grey text-center">
           {{ dataAndServices().description }}

@@ -4,6 +4,7 @@
       <img src="../../../assets/images/main_logo.png" alt="main-logo" class="lg:h-[56px] md:h-[36px] h-[36px]" />
     </div>
   </div>
+
   <div class="xl:col-span-4 lg:col-span-5 md:col-span-6 col-span-6">
     <div class="hidden sm:flex items-center justify-between lg:py-[59px] md:py-[40px] py-[28px] md:pl-0 pl-2">
       @for (link of headerLinks(); track link) {
@@ -21,11 +22,10 @@
       </div>
     }
   </div>
+
   <div class="xl:col-span-4 md:col-span-3 sm:col-span-3 col-span-12">
     <div class="hidden sm:flex justify-end items-center h-full">
-      <button
-        class="theme-button flex items-center justify-center gap-[10px] lg:px-[31px] md:px-[20px] px-[14px] lg:py-[16.5px] md:py-[12px] py-[10px] rounded-[60px] cursor-pointer"
-      >
+      <button class="theme-button flex items-center justify-center gap-[10px] lg:px-[31px] md:px-[20px] px-[14px] lg:py-[16.5px] md:py-[12px] py-[10px] rounded-[60px] cursor-pointer">
         <img src="../../../assets/images/console_menu.svg" alt="console-menu" class="max-md:h-[16px]" />
         <span class="links-button">Console</span>
         <img src="../../../assets/images/arrow_forward.svg" alt="arrow-forward" />
@@ -34,24 +34,22 @@
   </div>
 </section>
 
-<!-- Full-Screen Overlay Menu (Visible on Small Screens) -->
+<!-- full-screen overlay menu (visible on small screens) -->
 <div class="overlay w-full relative" [ngClass]="{ show: menuOpen }">
   <div class="flex flex-col justify-between w-full h-full">
     <div class="flex justify-between items-center w-full px-4 py-3 border-b border-[#E6E8EB]">
       <img src="../../../assets/images/main_logo.png" alt="main-logo" class="h-[36px]" />
       <button class="close-button" (click)="closeMenu()" aria-label="Close Menu">✕</button>
     </div>
+
     <ul class="overlay-nav-list w-full">
-      <li><a href="#data" (click)="closeMenu()">Data</a></li>
-      <li><a href="#services" (click)="closeMenu()">Services</a></li>
-      <li><a href="#docs" (click)="closeMenu()">Docs</a></li>
-      <li><a href="#company" (click)="closeMenu()">Company</a></li>
-      <li><a href="#contact" (click)="closeMenu()">Contact</a></li>
+      @for (link of headerLinks(); track link) {
+        <li><a (click)="closeMenu()">{{ link.label }}</a></li>
+      }
     </ul>
+
     <div class="px-5 pb-4 w-full">
-      <button
-        class="w-full theme-button flex items-center justify-center gap-[10px] px-[14px] py-[12px] rounded-[60px] cursor-pointer"
-      >
+      <button class="w-full theme-button flex items-center justify-center gap-[10px] px-[14px] py-[12px] rounded-[60px] cursor-pointer">
         <img src="../../../assets/images/console_menu.svg" alt="console-menu" class="max-md:h-[16px]" />
         <span class="links-button">Console</span>
         <img src="../../../assets/images/arrow_forward.svg" alt="arrow-forward" class="max-md:[10px]" />

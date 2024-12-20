@@ -4,17 +4,13 @@ import { HomeService } from '../../../../shared/services/home.service';
 
 @Component({
   selector: 'app-data-packages',
-  imports: [],
+  styleUrl: './data-packages.component.scss',
   templateUrl: './data-packages.component.html',
-  styleUrl: './data-packages.component.scss'
 })
 export class DataPackagesComponent {
-
   baseUrl: string = environment.apiUrl;
 
-  constructor(
-    private homeService: HomeService,
-  ){}
+  constructor(private homeService: HomeService) {}
 
   get hpAlgoseekDataPackages() {
     return this.homeService.hpAlgoseekDataPackages.asReadonly();
@@ -23,5 +19,4 @@ export class DataPackagesComponent {
   get hpAlgoseekDataPackagesItem() {
     return this.homeService.hpAlgoseekDataPackagesItem.asReadonly();
   }
-
 }

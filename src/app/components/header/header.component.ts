@@ -9,13 +9,11 @@ import { HomeService } from '../../shared/services/home.service';
   templateUrl: './header.component.html',
 })
 export class HeaderComponent {
-  menuOpen = false;
-  isMobile = false;
+  menuOpen: boolean = false;
+  isMobile: boolean = false;
 
-  constructor(
-    private homeService: HomeService,
-  ){}
-  
+  constructor(private homeService: HomeService) {}
+
   ngOnInit() {
     this.checkScreenSize();
   }

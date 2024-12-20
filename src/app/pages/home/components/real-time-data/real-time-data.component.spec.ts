@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { RealTimeDataComponent } from './real-time-data.component';
 
 describe('RealTimeDataComponent', () => {
@@ -8,9 +7,8 @@ describe('RealTimeDataComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RealTimeDataComponent]
-    })
-    .compileComponents();
+      imports: [RealTimeDataComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RealTimeDataComponent);
     component = fixture.componentInstance;

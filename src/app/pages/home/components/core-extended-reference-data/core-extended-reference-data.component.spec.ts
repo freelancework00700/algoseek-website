@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CoreExtendedReferenceDataComponent } from './core-extended-reference-data.component';
 
 describe('CoreExtendedReferenceDataComponent', () => {
@@ -8,9 +7,8 @@ describe('CoreExtendedReferenceDataComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CoreExtendedReferenceDataComponent]
-    })
-    .compileComponents();
+      imports: [CoreExtendedReferenceDataComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CoreExtendedReferenceDataComponent);
     component = fixture.componentInstance;

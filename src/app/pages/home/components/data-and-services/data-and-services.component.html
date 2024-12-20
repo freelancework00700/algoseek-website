@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="sm:grid lg:grid-cols-4 grid-cols-2 max-sm:flex max-sm:flex-col gap-6 w-full">
-        @for(image of useCases().images; track image) {
+        @for (image of useCases().images; track image) {
           <div class="flex items-center greyScale-white text-center w-full relative">
             <img
               [src]="baseUrl + '/assets/' + image.use_cases_images_id.image"

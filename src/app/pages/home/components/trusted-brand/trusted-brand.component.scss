@@ -1,35 +1,38 @@
 .trusted-brand-container {
   .swiper-slide {
     position: relative;
+
     &::before {
-      content: '';
-      position: absolute;
-      height: 100%;
-      width: 1px;
-      background-color: #e6e8eb;
-      right: -2px;
       top: 0;
+      width: 1px;
+      right: -2px;
+      content: '';
+      height: 100%;
+      position: absolute;
+      background-color: var(--algoseek-color-lighter-gray);
     }
+
     &:last-child {
       &::before {
         content: '';
-        position: absolute;
         display: none;
+        position: absolute;
       }
     }
   }
+
   .swiper-button-prev {
+    top: auto;
+    bottom: 0;
+    right: auto;
     width: 40px;
     height: 40px;
     border-radius: 100px;
-    background-color: black;
+    left: calc(50% - 120px);
     background-position: center;
     background-repeat: no-repeat;
+    background-color: var(--algoseek-color-dark);
     background-image: url('../../../../../assets/images/right-arrow.svg');
-    left: calc(50% - 120px);
-    right: auto;
-    top: auto;
-    bottom: 0;
   }
 
   .swiper-button-prev::after,
@@ -39,38 +42,40 @@
 
   .swiper-button-prev.swiper-button-disabled {
     background-color: unset;
-    border: 1px solid #1d1d1f;
+    border: 1px solid var(--algoseek-color-dark);
     background-image: url('../../../../../assets/images/right-arrow-gray.svg');
   }
 
   .swiper-button-next.swiper-button-disabled {
     background-color: unset;
-    border: 1px solid #1d1d1f;
+    border: 1px solid var(--algoseek-color-dark);
     background-image: url('../../../../../assets/images/left-arrow-gray.svg');
   }
 
   .swiper-button-next {
+    top: auto;
+    bottom: 0;
+    left: auto;
     width: 40px;
     height: 40px;
     border-radius: 100px;
-    background-color: black;
+    right: calc(50% - 120px);
     background-position: center;
     background-repeat: no-repeat;
+    background-color: var(--algoseek-color-dark);
     background-image: url('../../../../../assets/images/left-arrow.svg');
-    right: calc(50% - 120px);
-    left: auto;
-    top: auto;
-    bottom: 0;
   }
 }
+
 ::ng-deep .trusted-brand-container .swiper-pagination-bullet-active {
-  background: var(--algoseek-color-black) !important;
-  outline: 2px solid var(--algoseek-color-black);
   outline-offset: 4px;
   margin: 0 12px !important;
+  outline: 2px solid var(--algoseek-color-black);
+  background: var(--algoseek-color-black) !important;
 }
+
 ::ng-deep .trusted-brand-container .swiper-pagination-bullet {
-  height: 6px;
   width: 6px;
+  height: 6px;
   margin: 0 8px;
 }

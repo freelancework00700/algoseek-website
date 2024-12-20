@@ -3,18 +3,13 @@ import { HomeService } from '../../../../shared/services/home.service';
 
 @Component({
   selector: 'app-real-time-data',
-  imports: [],
+  styleUrl: './real-time-data.component.scss',
   templateUrl: './real-time-data.component.html',
-  styleUrl: './real-time-data.component.scss'
 })
 export class RealTimeDataComponent {
-
-  constructor(
-    private homeService: HomeService,
-  ){}
+  constructor(private homeService: HomeService) {}
 
   get realTimeData() {
     return this.homeService.realTimeData.asReadonly();
   }
-
 }
