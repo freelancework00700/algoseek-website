@@ -18,7 +18,7 @@
 
       <div class="sm:grid sm:grid-cols-12 xl:gap-[80px] md:gap-[20px] max-sm:flex max-sm:flex-col gap-[40px] w-full">
         <!-- market data -->
-        <div class="flex flex-col items-center gap-6 flex-1 lg:col-span-4 md:col-span-4 sm:col-span-12">
+        <div class="flex flex-col items-center gap-6 flex-1 2xl:col-span-4 lg:col-span-6 md:col-span-6 sm:col-span-12">
           <div class="desktop-heading-h4 greyScale-black text-center w-full">Market data</div>
           <div class="flex flex-col items-center gap-5 self-stretch">
             @for (data of dataOfferings().market_data; track data; let last = $last) {
@@ -33,7 +33,7 @@
         </div>
 
         <!-- core reference data -->
-        <div class="flex flex-col items-center gap-6 flex-1 lg:col-span-4 md:col-span-4 sm:col-span-12">
+        <div class="flex flex-col items-center gap-6 flex-1 2xl:col-span-4 lg:col-span-6 md:col-span-6 sm:col-span-12">
           <div class="desktop-heading-h4 greyScale-black text-center w-full">Core reference data</div>
           <div class="flex flex-col items-center gap-5 self-stretch">
             @for (data of dataOfferings().core_reference_data; track data; let last = $last) {
@@ -48,7 +48,9 @@
         </div>
 
         <!-- extended reference data -->
-        <div class="flex flex-col items-center gap-6 flex-1 lg:col-span-4 md:col-span-4 sm:col-span-12">
+        <div
+          class="flex flex-col items-center gap-6 flex-1 2xl:col-span-4 xl:col-start-4 lg:col-start-4 md:col-start-4 lg:col-span-6 md:col-span-6 sm:col-span-12"
+        >
           <div class="desktop-heading-h4 greyScale-black text-center w-full">Extended reference data</div>
           <div class="flex flex-col items-center gap-5 self-stretch">
             @for (data of dataOfferings().extended_reference_data; track data; let last = $last) {

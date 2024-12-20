@@ -8,7 +8,7 @@
   <div class="xl:col-span-4 lg:col-span-5 md:col-span-6 col-span-6">
     <div class="hidden sm:flex items-center justify-between lg:py-[59px] md:py-[40px] py-[28px] md:pl-0 pl-2">
       @for (link of headerLinks(); track link) {
-        <a class="md:text-[18px] text-[16px] leading-[22px] font-bold text-[#1D1D1F] cursor-pointer">
+        <a class="desktop-links-nav greyScale-dark cursor-pointer">
           {{ link.label }}
         </a>
       }
@@ -25,7 +25,9 @@
 
   <div class="xl:col-span-4 md:col-span-3 sm:col-span-3 col-span-12">
     <div class="hidden sm:flex justify-end items-center h-full">
-      <button class="theme-button flex items-center justify-center gap-[10px] lg:px-[31px] md:px-[20px] px-[14px] lg:py-[16.5px] md:py-[12px] py-[10px] rounded-[60px] cursor-pointer">
+      <button
+        class="theme-button flex items-center justify-center gap-[10px] lg:px-[31px] md:px-[20px] px-[14px] lg:py-[16.5px] md:py-[12px] py-[10px] rounded-[60px] cursor-pointer"
+      >
         <img src="../../../assets/images/console_menu.svg" alt="console-menu" class="max-md:h-[16px]" />
         <span class="links-button">Console</span>
         <img src="../../../assets/images/arrow_forward.svg" alt="arrow-forward" />
@@ -44,12 +46,16 @@
 
     <ul class="overlay-nav-list w-full">
       @for (link of headerLinks(); track link) {
-        <li><a (click)="closeMenu()">{{ link.label }}</a></li>
+        <li class="py-[25px]">
+          <a (click)="closeMenu()" class="desktop-links-nav greyScale-dark">{{ link.label }}</a>
+        </li>
       }
     </ul>
 
     <div class="px-5 pb-4 w-full">
-      <button class="w-full theme-button flex items-center justify-center gap-[10px] px-[14px] py-[12px] rounded-[60px] cursor-pointer">
+      <button
+        class="w-full theme-button flex items-center justify-center gap-[10px] px-[14px] py-[12px] rounded-[60px] cursor-pointer"
+      >
         <img src="../../../assets/images/console_menu.svg" alt="console-menu" class="max-md:h-[16px]" />
         <span class="links-button">Console</span>
         <img src="../../../assets/images/arrow_forward.svg" alt="arrow-forward" class="max-md:[10px]" />
