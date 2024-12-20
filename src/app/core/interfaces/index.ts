@@ -85,3 +85,34 @@ export interface HomeAlgoseekDataPackagesItem {
   description?: string;
   name?: string;
 }
+
+export interface AlgoseekConsole {
+  title: string;
+  description: string;
+  content: string;
+}
+
+export interface HomeAlgoseekConsoleIcon {
+  name: string;
+  id?: number;
+  svg: string;
+}
+
+export interface HomeAlgoseekConsoleIconSection {
+  top?: HomeAlgoseekConsoleIcon[];
+  middle?: HomeAlgoseekConsoleIcon[];
+  bottom?: HomeAlgoseekConsoleIcon[];
+}
+
+export interface DataAndServices {
+  id: number;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  data_services_cards?: any[];
+}
+
+export interface DataAndServicesCard {
+  name?: string | null;
+  image_url: string;
+}

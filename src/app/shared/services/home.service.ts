@@ -3,8 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AlgoseekApiService } from './algoseek-api.service';
 import {
+  AlgoseekConsole,
+  DataAndServices,
+  DataAndServicesCard,
   DataOfferings,
   HeaderLink,
+  HomeAlgoseekConsoleIconSection,
   HomeAlgoseekDataPackages,
   HomeAlgoseekDataPackagesItem,
   HomePageHeroSlider,
@@ -44,6 +48,20 @@ export class HomeService {
     is_new: false,
   });
   hpAlgoseekDataPackagesItem = signal<HomeAlgoseekDataPackagesItem[]>([]);
+  algoseekConsole = signal<AlgoseekConsole>({
+    title: '',
+    description: '',
+    content: '',
+  });
+  hpAlgoseekConsoleIcons = signal<HomeAlgoseekConsoleIconSection>({});
+  dataAndServices = signal<DataAndServices>({
+    id: 1,
+    data_services_cards: [],
+    title: '',
+    subtitle: '',
+    description: '',
+  });
+  dataAndServicesCards = signal<DataAndServicesCard[]>([]);
 
   constructor(
     private apiService: AlgoseekApiService,
@@ -98,6 +116,34 @@ export class HomeService {
 
   getHpDataPackagesItemContent(): Observable<any> {
     const url = `${this.apiService._BASE_URL}/items/data_packages_item?fields[]=name,description`;
+    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  }
+
+  getAlgoseekConsoleContent(): Observable<any> {
+    const url = `${
+      this.apiService._BASE_URL
+    }/items/algoseek_console?fields[]=title,content,description`;
+    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  }
+
+  getHpAlgoseekConsoleIconsContent(): Observable<any> {
+    const url = `${
+      this.apiService._BASE_URL
+    }/items/hp_algoseek_console_icons?fields[]=id,name,svg`;
+    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  }
+
+  getDataAndServicesContent(): Observable<any> {
+    const url = `${
+      this.apiService._BASE_URL
+    }/items/data_and_services?fields[]=id,title,subtitle,description&fields[]=data_services_cards`;
+    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  }
+
+  getDataAndServicesCardsContent(): Observable<any> {
+    const url = `${
+      this.apiService._BASE_URL
+    }/items/cards?fields[]=name,image_url`;
     return this.http.get(url, { headers: this.apiService.getHeaders() });
   }
 }

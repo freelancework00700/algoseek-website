@@ -3,11 +3,10 @@
     <div class="flex flex-col items-center xl:gap-[80px] md:gap-[60px] gap-[32px] w-full max-xl:px-[16px]">
       <div class="flex flex-col items-center gap-6 max-w-[952px] mx-auto">
         <div class="desktop-heading-h2 greyScale-dark text-center">
-          <a>algoseek Console</a>
+          <a>{{ algoseekConsole().title }}</a>
         </div>
         <div class="desktop-body-text-sm greyScale-darker-grey text-center">
-          A centralized platform providing immediate access to a comprehensive suite of algoseek and thirdparty
-          financial data, tools, and services, all within a secure cloud environment
+          {{ algoseekConsole().description }}
         </div>
       </div>
       <div class="lg:grid md:grid-cols-2 xl:gap-[146px] lg:gap-[40px] gap-5 w-full flex flex-col place-items-center">
@@ -15,18 +14,15 @@
           <div class="bg-common-gradient xl:p-10 p-4 rounded-2xl">
             <div class="md:mb-12 mb-[24px]">
               <div class="grid grid-cols-3 md:gap-6 gap-3">
-                <div class="console-box-bg">
-                  <img src="../../../../../assets/images/algoseek-console/data.svg" />
-                  <div class="desktop-body-text-sm greyScale-dark-grey">Data</div>
-                </div>
-                <div class="console-box-bg line-bottom">
-                  <img src="../../../../../assets/images/algoseek-console/tools.svg" />
-                  <div class="desktop-body-text-sm greyScale-dark-grey">Tools</div>
-                </div>
-                <div class="console-box-bg">
-                  <img src="../../../../../assets/images/algoseek-console/Marketplace.svg" />
-                  <div class="desktop-body-text-sm greyScale-dark-grey">Marketplace</div>
-                </div>
+                @for (icon of hpAlgoseekConsoleIcons().top; track $index) {
+                  <div class="console-box-bg" [ngClass]="{ 'line-bottom': $index == 1 }">
+                    <div
+                      [innerHtml]="icon.svg | safeHtml"
+                      class="algoseek-icon">
+                    </div>
+                    <div class="desktop-body-text-sm greyScale-dark-grey">{{ icon.name }}</div>
+                  </div>
+                }
               </div>
             </div>
             <div class="flex flex-col md:gap-6 gap-3 md:mb-6 mb-3 relative">
@@ -42,44 +38,30 @@
                 <div class="absolute -top-[12px] left-0 min-[476px]:hidden rotate-180 flex justify-center w-full">
                   <img src="../../../../../assets/images/algoseek-console/bottom-curve-small.svg" class="" />
                 </div>
-                <div class="console-box-outline-bg bg-common-gradient line-bottom">
-                  <img src="../../../../../assets/images/algoseek-console/Jupyter_logo.png" />
-                  <div class="desktop-body-text-sm greyScale-dark-grey text-center">Jupyter Notebook</div>
-                </div>
-                <div class="console-box-outline-bg bg-common-gradient line-bottom line-top">
-                  <img src="../../../../../assets/images/algoseek-console/Apache-Superset.png" />
-                  <div class="desktop-body-text-sm greyScale-dark-grey text-center">Apache Superset</div>
-                </div>
-                <div class="console-box-outline-bg bg-common-gradient line-bottom">
-                  <img src="../../../../../assets/images/algoseek-console/Visual-Studio.png" />
-                  <div class="desktop-body-text-sm greyScale-dark-grey text-center">
-                    Visual<br />
-                    Studio
+
+                @for (icon of hpAlgoseekConsoleIcons().middle; track icon) {
+                  <div class="console-box-outline-bg bg-common-gradient line-bottom">
+                    <div
+                      class="algoseek-icon"
+                      [innerHtml]="icon.svg | safeHtml"
+                    ></div>
+                    <div class="desktop-body-text-sm greyScale-dark-grey text-center">{{ icon.name }}</div>
                   </div>
-                </div>
+                }
               </div>
               <div class="grid grid-cols-3 md:gap-6 gap-3">
-                <div class="console-box-outline-bg bg-common-gradient">
-                  <img src="../../../../../assets/images/algoseek-console/Microsoft-Excel.png" />
-                  <div class="desktop-body-text-sm greyScale-dark-grey text-center">
-                    Microsoft<br />
-                    Excel
+                @for (icon of hpAlgoseekConsoleIcons().bottom; track $index) {
+                  <div class="console-box-outline-bg bg-common-gradient" [ngClass]="{ 'line-bottom': $index == 1 }">
+                    <div
+                      class="algoseek-icon"
+                      [innerHtml]="icon.svg | safeHtml"
+                    ></div>
+                    <div class="desktop-body-text-sm greyScale-dark-grey text-center">
+                      {{ icon.name }}
+                    </div>
                   </div>
-                </div>
-                <div class="console-box-outline-bg bg-common-gradient line-bottom">
-                  <img src="../../../../../assets/images/algoseek-console/Linux-Terminal.svg" />
-                  <div class="desktop-body-text-sm greyScale-dark-grey text-center">
-                    Linux<br />
-                    Terminal
-                  </div>
-                </div>
-                <div class="console-box-outline-bg bg-common-gradient">
-                  <img src="../../../../../assets/images/algoseek-console/ArdaDBQuery.svg" />
-                  <div class="desktop-body-text-sm greyScale-dark-grey text-center">
-                    ArdaDB<br />
-                    Query
-                  </div>
-                </div>
+                }
+
                 <img
                   src="../../../../../assets/images/algoseek-console/left-bottom-curve.svg"
                   class="absolute min-[768px]:-bottom-[24px] -bottom-[12px] min-[575px]:left-[86px] min-[450px]:left-[76px] left-[56px] max-[475px]:hidden"
@@ -97,10 +79,8 @@
         </div>
         <div class="lg:col-span-1">
           <div class="flex flex-col md:gap-9 gap-6">
-            <div class="desktop-body-text greyScale-dark-grey max-md:text-center">
-              <span class="desktop-heading-h6 greyScale-black">A Zero Setup Time, Zero CapEx, Zero Maintenance</span>
-              data solution, allowing you to immediately work with data on our platform using your preferred tools, or
-              from your own computer with database connection, algoseek Python Library, or Excel plug-in.
+            <div class="desktop-body-text greyScale-dark-grey max-md:text-center"
+              [innerHTML]="algoseekConsole().content">
             </div>
             <div class="flex justify-start max-md:w-full">
               <button

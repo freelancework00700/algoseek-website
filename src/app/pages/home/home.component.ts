@@ -14,7 +14,7 @@ import { AlgoseekConsoleComponent } from './components/algoseek-console/algoseek
 import { DataOnboardingServicesComponent } from './components/data-onboarding-services/data-onboarding-services.component';
 import { HomeService } from '../../shared/services/home.service';
 import { Subject, takeUntil } from 'rxjs';
-import { HeaderData, HomePageStatsNumber } from '../../core/interfaces';
+import { HeaderData, HomeAlgoseekConsoleIcon, HomeAlgoseekConsoleIconSection, HomePageStatsNumber } from '../../core/interfaces';
 
 @Component({
   selector: 'app-home',
@@ -48,6 +48,19 @@ export class HomeComponent {
   ngOnDestroy() {
     this._destroy$.next();
     this._destroy$.complete();
+  }
+
+  _splitIconsArray(
+    icons: HomeAlgoseekConsoleIcon[]
+  ): HomeAlgoseekConsoleIconSection {
+    const totalIcons = icons.length;
+    const chunkSize = Math.ceil(totalIcons / 3);
+
+    const top = icons.slice(0, chunkSize);
+    const middle = icons.slice(chunkSize, chunkSize * 2);
+    const bottom = icons.slice(chunkSize * 2);
+
+    return { top, middle, bottom };
   }
 
   homePageContentSubscriptions() {
@@ -179,6 +192,55 @@ export class HomeComponent {
         error: (error) => {
           console.error(error);
         },
+      });
+
+    this.homeService
+      .getAlgoseekConsoleContent()
+      .pipe(takeUntil(this._destroy$))
+      .subscribe({
+        next: (response) => {
+          this.homeService.algoseekConsole.set(response.data[0]);
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
+    
+    this.homeService
+      .getHpAlgoseekConsoleIconsContent()
+      .pipe(takeUntil(this._destroy$))
+      .subscribe({
+        next: (response) => {
+          const data = this._splitIconsArray(response.data);
+          this.homeService.hpAlgoseekConsoleIcons.set(data);
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
+
+    this.homeService
+      .getDataAndServicesContent()
+      .pipe(takeUntil(this._destroy$))
+      .subscribe({
+        next: (response) => {
+          this.homeService.dataAndServices.set(response.data[0]);
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
+
+    this.homeService
+      .getDataAndServicesCardsContent()
+      .pipe(takeUntil(this._destroy$))
+      .subscribe({
+        next: (response) => {
+          this.homeService.dataAndServicesCards.set(response.data);
+        },
+        error: (error) => {
+          console.error(error);
+        }
       });
   }
 }
