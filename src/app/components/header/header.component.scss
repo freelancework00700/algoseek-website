@@ -41,3 +41,28 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.console-btn:hover > .app-logo {
+  transform: rotate(315deg);
+}
+
+.app-logo {
+  transition: transform ease-in-out 0.5s;
+}
+
+.nav-item {
+  position: relative;
+  transition: transform ease-in-out 0.5s;
+  a:hover {
+    color: var(--algoseek-color-accent);
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      height: 2px;
+      background-color: var(--algoseek-color-accent);
+      width: 100%;
+    }
+  }
+}

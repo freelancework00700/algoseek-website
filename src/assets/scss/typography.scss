@@ -6,18 +6,23 @@
   font-weight: 700;
   line-height: 110%;
   letter-spacing: -4.2px;
+  @media screen and (max-width: 1535px) {
+    font-size: 100px;
+    line-height: 108%;
+    letter-spacing: -3.62px;
+  }
   @media screen and (max-width: 1024px) {
-    font-size: 90px;
+    font-size: 70px;
     line-height: 108%;
     letter-spacing: -3.62px;
   }
   @media screen and (max-width: 768px) {
-    font-size: 70px;
+    font-size: 60px;
     line-height: 104%;
     letter-spacing: -2.62px;
   }
   @media screen and (max-width: 640px) {
-    font-size: 54px;
+    font-size: 42px;
     line-height: 102%;
     letter-spacing: -1.62px;
   }
@@ -86,7 +91,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: 115%;
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1279px) {
     font-size: 28px;
     line-height: 114%;
   }
@@ -172,6 +177,9 @@
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
+  @media screen and (max-width: 1279px) {
+    font-size: 18px;
+  }
   @media screen and (max-width: 768px) {
     font-size: 16px;
   }

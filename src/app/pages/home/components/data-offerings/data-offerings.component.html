@@ -18,14 +18,18 @@
 
       <div class="sm:grid sm:grid-cols-12 xl:gap-[80px] md:gap-[20px] max-sm:flex max-sm:flex-col gap-[40px] w-full">
         <!-- market data -->
-        <div class="flex flex-col items-center gap-6 flex-1 2xl:col-span-4 lg:col-span-6 md:col-span-6 sm:col-span-12">
+        <div class="flex flex-col items-center gap-6 flex-1 lg:col-span-4 md:col-span-6 sm:col-span-12">
           <div class="desktop-heading-h4 greyScale-black text-center w-full">Market data</div>
           <div class="flex flex-col items-center gap-5 self-stretch">
             @for (data of dataOfferings().market_data; track data; let last = $last) {
-              <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
-                <div class="flex items-center justify-center gap-3 flex-wrap text-center">
+              <div
+                class="border min-h-[60px] p-4 max-lg:px-0 w-full rounded-lg flex items-center justify-center line-bottom"
+              >
+                <div class="flex items-center justify-center lg:gap-3 gap-1 flex-wrap text-center">
                   <div [innerHtml]="data.data_offering_icons_id.svg | safeHtml"></div>
-                  <div class="desktop-heading-h6 greyScale-dark">{{ data.data_offering_icons_id.label }}</div>
+                  <div class="lg:desktop-heading-h6 desktop-body-text greyScale-dark">
+                    {{ data.data_offering_icons_id.label }}
+                  </div>
                 </div>
               </div>
             }
@@ -33,14 +37,18 @@
         </div>
 
         <!-- core reference data -->
-        <div class="flex flex-col items-center gap-6 flex-1 2xl:col-span-4 lg:col-span-6 md:col-span-6 sm:col-span-12">
+        <div class="flex flex-col items-center gap-6 flex-1 lg:col-span-4 md:col-span-6 sm:col-span-12">
           <div class="desktop-heading-h4 greyScale-black text-center w-full">Core reference data</div>
           <div class="flex flex-col items-center gap-5 self-stretch">
             @for (data of dataOfferings().core_reference_data; track data; let last = $last) {
-              <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
-                <div class="flex items-center justify-center gap-3 flex-wrap text-center">
+              <div
+                class="border min-h-[60px] p-4 max-lg:px-0 w-full rounded-lg flex items-center justify-center line-bottom"
+              >
+                <div class="flex items-center justify-center lg:gap-3 gap-1 flex-wrap text-center">
                   <div [innerHtml]="data.data_offering_icons_id.svg | safeHtml"></div>
-                  <div class="desktop-heading-h6 greyScale-dark">{{ data.data_offering_icons_id.label }}</div>
+                  <div class="lg:desktop-heading-h6 desktop-body-text greyScale-dark">
+                    {{ data.data_offering_icons_id.label }}
+                  </div>
                 </div>
               </div>
             }
@@ -48,16 +56,18 @@
         </div>
 
         <!-- extended reference data -->
-        <div
-          class="flex flex-col items-center gap-6 flex-1 2xl:col-span-4 xl:col-start-4 lg:col-start-4 md:col-start-4 lg:col-span-6 md:col-span-6 sm:col-span-12"
-        >
+        <div class="flex flex-col items-center gap-6 flex-1 lg:col-span-4 md:col-start-4 md:col-span-6 sm:col-span-12">
           <div class="desktop-heading-h4 greyScale-black text-center w-full">Extended reference data</div>
           <div class="flex flex-col items-center gap-5 self-stretch">
             @for (data of dataOfferings().extended_reference_data; track data; let last = $last) {
-              <div class="border min-h-[60px] p-4 w-full rounded-lg flex items-center justify-center line-bottom">
-                <div class="flex items-center justify-center gap-3 flex-wrap text-center">
+              <div
+                class="border min-h-[60px] p-4 max-lg:px-0 w-full rounded-lg flex items-center justify-center line-bottom"
+              >
+                <div class="flex items-center justify-center lg:gap-3 gap-1 flex-wrap text-center">
                   <div [innerHtml]="data.data_offering_icons_id.svg | safeHtml"></div>
-                  <div class="desktop-heading-h6 greyScale-dark">{{ data.data_offering_icons_id.label }}</div>
+                  <div class="lg:desktop-heading-h6 desktop-body-text greyScale-dark">
+                    {{ data.data_offering_icons_id.label }}
+                  </div>
                 </div>
               </div>
             }
