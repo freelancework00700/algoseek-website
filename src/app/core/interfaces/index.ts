@@ -116,3 +116,9 @@ export interface DataAndServicesCard {
   name?: string | null;
   image_url: string;
 }
+
+export interface FooterLinks {
+  label: string;
+  url?: string;
+  order?: number;
+}

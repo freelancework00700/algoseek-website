@@ -202,6 +202,18 @@ export class HomeComponent {
           console.error(error);
         },
       });
+
+    this.homeService
+      .getFooterLinksContent()
+      .pipe(takeUntil(this._destroy$))
+      .subscribe({
+        next: (response) => {
+          this.homeService.footerLinks.set(response.data);
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
   }
 
   // function to set home stats numbers

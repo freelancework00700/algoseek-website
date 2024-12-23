@@ -7,6 +7,7 @@ import {
   DataAndServices,
   DataAndServicesCard,
   DataOfferings,
+  FooterLinks,
   HeaderLink,
   HomeAlgoseekConsoleIconSection,
   HomeAlgoseekDataPackages,
@@ -62,6 +63,7 @@ export class HomeService {
     description: '',
   });
   dataAndServicesCards = signal<DataAndServicesCard[]>([]);
+  footerLinks = signal<FooterLinks[]>([]);
 
   constructor(
     private apiService: AlgoseekApiService,
@@ -144,6 +146,13 @@ export class HomeService {
     const url = `${
       this.apiService._BASE_URL
     }/items/cards?fields[]=name,image_url`;
+    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  }
+
+  getFooterLinksContent(): Observable<any> {
+    const url = `${
+      this.apiService._BASE_URL
+    }/items/footer_links?fields[]=label,order,url`;
     return this.http.get(url, { headers: this.apiService.getHeaders() });
   }
 }

@@ -19,46 +19,70 @@
           </div>
         </div>
       </div>
-      <div class="flex justify-between flex-1 max-lg:grid max-lg:grid-cols-2 max-sm:grid-cols-1 max-lg:gap-10">
-        <div class="flex flex-col lg:gap-7 gap-5">
-          <div class="desktop-links-nav greyScale-white">Coming soon</div>
-          <div class="flex flex-col gap-5">
-            <a class="desktop-links-nav greyScale-white opacity-50 cursor-pointer">Cash Forex</a>
-            <a class="desktop-links-nav greyScale-white opacity-50 cursor-pointer">Cryptocurrencies</a>
-            <a class="desktop-links-nav greyScale-white opacity-50 cursor-pointer">Full Corporate Events</a>
+      
+      <div class="website-map">
+        <div class="section" [class.active]="dropdowns['comingSoon']">
+          <div class="header text-white" (click)="toggleDropdown('comingSoon')">
+            Coming soon
+            <div>
+              <svg class="toggle-icon" viewBox="0 0 11 7" fill="none">
+                <path xmlns="http://www.w3.org/2000/svg" d="M1 1.25L5.5 5.75L10 1.25" stroke="white"/>
+              </svg>
+            </div>
           </div>
+          @for(link of footerLinks() | slice : 0 : 3; track link) {
+            <a class="item algoseek-menu__link text-darker-gray mb-12">
+              {{ link.label }}
+            </a>
+          }
         </div>
-        <div class="flex flex-col lg:gap-7 gap-5">
-          <div class="desktop-links-nav greyScale-white">What's new</div>
-          <div class="flex flex-col gap-5">
-            <a class="desktop-links-nav greyScale-white opacity-50 cursor-pointer">Master File</a>
-            <a class="desktop-links-nav greyScale-white opacity-50 cursor-pointer">ML4T Download</a>
-            <a class="desktop-links-nav greyScale-white opacity-50 cursor-pointer">LEAN Format</a>
+        <div class="section" [class.active]="dropdowns['whatsNew']">
+          <div class="header text-white" (click)="toggleDropdown('whatsNew')">
+            What’s new
+            <div>
+              <svg class="toggle-icon" viewBox="0 0 11 7" fill="none">
+                <path xmlns="http://www.w3.org/2000/svg" d="M1 1.25L5.5 5.75L10 1.25" stroke="white"/>
+              </svg>
+            </div>
           </div>
+          @for(link of footerLinks() | slice : 3 : 6; track link) {
+            <a class="item algoseek-menu__link text-darker-gray mb-12">
+              {{ link.label }}
+            </a>
+          }
         </div>
-        <div class="flex flex-col lg:gap-7 gap-5">
-          <div class="desktop-links-nav greyScale-white">Legal</div>
-          <div class="flex flex-col gap-5">
-            <a class="desktop-links-nav greyScale-white opacity-50 cursor-pointer"
-              >Data Licensing and <br />Service Master Agreement</a
-            >
-            <a class="desktop-links-nav greyScale-white opacity-50 cursor-pointer">Master Service Agreement</a>
-            <a class="desktop-links-nav greyScale-white opacity-50 cursor-pointer">Schedule 2</a>
-            <a class="desktop-links-nav greyScale-white opacity-50 cursor-pointer">Schedule 3</a>
+        <div class="section" [class.active]="dropdowns['legal']">
+          <div class="header text-white" (click)="toggleDropdown('legal')">
+            Legal
+            <div>
+              <svg class="toggle-icon" viewBox="0 0 11 7" fill="none">
+                <path xmlns="http://www.w3.org/2000/svg" d="M1 1.25L5.5 5.75L10 1.25" stroke="white"/>
+              </svg>
+            </div>
           </div>
+          @for(link of footerLinks() | slice : 6 : 11; track link) {
+            <a class="item algoseek-menu__link text-darker-gray mb-12">
+              {{ link.label }}
+            </a>
+          }
         </div>
-        <div class="flex flex-col lg:gap-7 gap-5">
-          <div class="desktop-links-nav greyScale-white">Resources</div>
-          <div class="flex flex-col gap-5">
-            <a class="desktop-links-nav greyScale-white opacity-50 cursor-pointer"
-              >Data Licensing and <br />Service Master Agreement</a
-            >
-            <a class="desktop-links-nav greyScale-white opacity-50 cursor-pointer">Terms of Use</a>
-            <a class="desktop-links-nav greyScale-white opacity-50 cursor-pointer">Site Map</a>
-            <a class="desktop-links-nav greyScale-white opacity-50 cursor-pointer">Cookie setting</a>
+        <div class="section" [class.active]="dropdowns['resources']">
+          <div class="header text-white" (click)="toggleDropdown('resources')">
+            Resources
+            <div>
+              <svg class="toggle-icon" viewBox="0 0 11 7" fill="none">
+                <path xmlns="http://www.w3.org/2000/svg" d="M1 1.25L5.5 5.75L10 1.25" stroke="white"/>
+              </svg>
+            </div>
           </div>
+          @for(link of footerLinks() | slice : 11 : 15; track link) {
+            <a class="item algoseek-menu__link text-darker-gray mb-12">
+              {{ link.label }}
+            </a>
+          }
         </div>
       </div>
+
     </div>
   </div>
 </div>
