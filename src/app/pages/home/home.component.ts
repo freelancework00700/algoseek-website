@@ -53,23 +53,35 @@ export class HomeComponent {
   isScrolled: boolean = false;
   _destroy$ = new Subject<void>();
   @ViewChild('homeStats', { static: false }) homeStats: any;
+  isHeaderVisible: boolean = true;
+  previousScrollPosition: number = 0;
 
   constructor(private homeService: HomeService) {}
 
   ngOnInit() {
+    this.isHeaderVisible = true;
     this.homePageContentSubscriptions();
   }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
     this.checkScrollPosition();
+
+    const scrollY = window.scrollY;
+    if (scrollY > this.previousScrollPosition) {
+      this.isHeaderVisible = false;
+    } else {
+      this.isHeaderVisible = true;
+    }
+    this.previousScrollPosition = scrollY;
+    
   }
 
   scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }
 
-  checkScrollPosition() {
+  checkScrollPosition() {    
     if (this.homeStats) {
       const homeStatElement = this.homeStats.getElement();
       const homeStatTop = homeStatElement.offsetTop;

@@ -46,7 +46,7 @@
       <button class="close-button" (click)="closeMenu()" aria-label="Close Menu">✕</button>
     </div>
 
-    <ul class="overlay-nav-list w-full">
+    <ul class="overlay-nav-list w-full bg-white">
       @for (link of headerLinks(); track link) {
         <li class="py-[25px] nav-item">
           <a (click)="closeMenu()" class="desktop-links-nav greyScale-dark">{{ link.label }}</a>
