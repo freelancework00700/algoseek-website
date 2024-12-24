@@ -10,4 +10,5 @@ export const TYPED_OPTIONS: TypedOptions = {
   fadeOutDelay: 0,
   showCursor: true,
   smartBackspace: false,
+  cursorChar: '_',
 };

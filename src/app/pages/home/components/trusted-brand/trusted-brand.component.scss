@@ -21,18 +21,26 @@
     }
   }
 
-  .swiper-button-prev {
+  .btn-pre-parent {
     top: auto;
     bottom: 0;
+    left: calc(50% - 120px);
+    width: 40px;
+    height: 40px;
     right: auto;
+    z-index: 10;
+    position: absolute;
+  }
+
+  .swiper-button-prev {
     width: 40px;
     height: 40px;
     border-radius: 100px;
-    left: calc(50% - 120px);
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--algoseek-color-dark);
     background-image: url('../../../../../assets/images/right-arrow.svg');
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .swiper-button-prev::after,
@@ -52,18 +60,31 @@
     background-image: url('../../../../../assets/images/left-arrow-gray.svg');
   }
 
-  .swiper-button-next {
+  .btn-next-parent {
     top: auto;
     bottom: 0;
     left: auto;
     width: 40px;
     height: 40px;
-    border-radius: 100px;
     right: calc(50% - 120px);
+    z-index: 10;
+    position: absolute;
+  }
+
+  .swiper-button-next {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--algoseek-color-dark);
     background-image: url('../../../../../assets/images/left-arrow.svg');
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    transform: scale(1.07);
   }
 }
 

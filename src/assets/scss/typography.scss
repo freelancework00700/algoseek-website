@@ -215,7 +215,13 @@
   @media screen and (max-width: 768px) {
     height: 48px;
   }
+  & {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
 }
+.theme-button:hover {
+  transform: scale(1.02);
+} 
 .desktop-links-nav {
   font-family: 'Proxima Nova';
   font-size: 18px;
@@ -233,6 +239,9 @@
     font-size: 18px;
     font-weight: 600;
   }
+  & {
+    transition: 0.3s ease;
+  }
 }
 .outline-white-btn {
   display: flex;
@@ -246,7 +255,31 @@
   @media screen and (max-width: 767px) {
     height: 48px;
   }
+  & {
+    transition: 0.3s ease;
+  }
 }
+.outline-white-btn:hover {
+  background-color: var(--algoseek-color-white);
+  border: 2px solid var(--algoseek-color-white);
+  .links-button {
+    color: var(--algoseek-color-black);
+  }
+}
+
+.outline-white-btn .arrow-icon {
+  width: 15px;
+  height: 15px;
+  background-image: url('../images/arrow-up-cross.svg');
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.3s ease;
+}
+
+.outline-white-btn:hover .arrow-icon {
+  background-image: url('../images/arrow-up-cross_black.svg');
+}
+
 .outline-black-btn {
   display: flex;
   height: 60px;
@@ -259,6 +292,30 @@
   @media screen and (max-width: 767px) {
     height: 48px;
   }
+  & {
+    transition: 0.3s ease;
+  }
+}
+
+.outline-black-btn:hover {
+  background-color: var(--algoseek-color-dark-gray);
+  border: 2px solid var(--algoseek-color-dark-gray);
+  .links-button {
+    color: var(--algoseek-color-white);
+  }
+}
+
+.outline-black-btn .arrow-icon {
+  width: 15px;
+  height: 15px;
+  background-image: url('../images/arrow-up-cross_black.svg');
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.3s ease;
+}
+
+.outline-black-btn:hover .arrow-icon {
+  background-image: url('../images/arrow-up-cross.svg');
 }
 
 // colors
