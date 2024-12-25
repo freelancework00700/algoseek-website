@@ -14,7 +14,7 @@ export class TrustedBrandComponent implements OnInit {
   swiper!: Swiper;
   baseUrl: string = environment.apiUrl;
 
-  constructor(private homeService: HomeService) {}
+  constructor(private homeService: HomeService) { }
 
   get trustedPartners() {
     return this.homeService.trustedPartners.asReadonly();
@@ -37,13 +37,13 @@ export class TrustedBrandComponent implements OnInit {
         slidesPerView: 7,
       },
       1200: {
-        slidesPerView: 7,
-      },
-      1024: {
         slidesPerView: 6,
       },
-      768: {
+      1024: {
         slidesPerView: 5,
+      },
+      768: {
+        slidesPerView: 4,
       },
       320: {
         slidesPerView: 3,

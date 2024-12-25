@@ -1,115 +1,127 @@
 :host {
-    color: var(--algoseek-color-light-gray);
+  color: var(--algoseek-color-light-gray);
 }
 
 .website-map {
-    display: flex;
-    flex: 1;
-    justify-content: space-between;
-    gap: 20px;
-  
-    .section {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-  
-      .header {
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 22px;
-        letter-spacing: 0em;
-        text-align: left;
-        margin-bottom: 28px;
-        user-select: none;
-        cursor: pointer;
-  
-        .toggle-icon {
-          display: none; /* Initially hidden */
-          transition: transform 0.3s ease;
-        }
-      }
-  
-      .item {
-        font-family: "Proxima Nova";
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;/* Hide by default on small screens */
-      }
-    }
-}
-  
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  gap: 20px;
 
-  @media (min-width: 900px) {
-  
-    .website-map .section .item {
-      height: auto;
-    }
-  
-    .website-map .section .header {
+  .section {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .header {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 22px;
+      letter-spacing: 0em;
+      text-align: left;
       margin-bottom: 28px;
+      user-select: none;
+      cursor: pointer;
+
+      .toggle-icon {
+        display: none;
+        /* Initially hidden */
+        transition: transform 0.3s ease;
+      }
     }
-  
-    .website-map .section .toggle-icon {
-      display: none;
+
+    .item {
+      font-family: "Proxima Nova";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      /* Hide by default on small screens */
     }
   }
-  
-  /* For small screens (below 900px) */
-  @media (max-width: 900px) {
-    .website-map {
-        flex-direction: column;
-    
-        .section {
-          padding-bottom: 16px;
-          margin-bottom: 0px;
-          border-bottom: 1px solid var(--algoseek-color-dark-gray);
-    
-          &:last-child {
-            border-bottom: none;
-          }
-    
-          &.active {
-            .header {
-              margin-bottom: 24px;
-    
-              .toggle-icon {
-                transform: rotate(180deg);
-              }
-            }
-    
-            .item {
-              height: 22px;
-              margin-bottom: 20px;
-              transform: translateY(0);
-            }
-          }
-    
-          .header {
-            margin-bottom: 0;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-    
-            .toggle-icon {
-              display: block;
-              width: 13px;
-              height: 9px;
-            }
-          }
-    
-          .item {
-            height: 0;
-            margin: 0;
-            overflow: hidden;
-            transition: all 0.3s ease-in-out;
-    
-            &:last-child {
-              margin-bottom: 0;
-            }
+}
+
+
+@media (min-width: 900px) {
+
+  .website-map .section .item {
+    height: auto;
+  }
+
+  .website-map .section .header {
+    margin-bottom: 28px;
+  }
+
+  .website-map .section .toggle-icon {
+    display: none;
+  }
+}
+
+/* For small screens (below 900px) */
+@media (max-width: 900px) {
+  .website-map {
+    flex-direction: column;
+
+    .section {
+      padding-bottom: 16px;
+      margin-bottom: 0px;
+      border-bottom: 1px solid var(--algoseek-color-dark-gray);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &.active {
+        .header {
+          margin-bottom: 24px;
+
+          .toggle-icon {
+            transform: rotate(180deg);
           }
         }
+
+        .item {
+          height: 22px;
+          margin-bottom: 20px;
+          transform: translateY(0);
+        }
       }
+
+      .header {
+        margin-bottom: 0;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .toggle-icon {
+          display: block;
+          width: 13px;
+          height: 9px;
+        }
+      }
+
+      .item {
+        height: 0;
+        margin: 0;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
   }
-  
+}
+
+.send-button {
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.send-button:hover {
+  transform: scale(1.02);
+}

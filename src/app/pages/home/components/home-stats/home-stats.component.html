@@ -2,11 +2,20 @@
   #wrapper
   class="stats-bg w-full sm:h-[550px] lg:py-[64px] sm:py-[56px] py-[40px] lg:px-[120px] md:px-[60px] sm:px-[30px] px-[16px]"
 >
-<div class="container mx-auto h-full">
-    <video #videoPlayer autoplay muted loop playsinline class="video-background" oncanplay="this.play()" onloadedmetadata="this.muted = true">
+  <div class="container mx-auto h-full">
+    <video
+      #videoPlayer
+      autoplay
+      muted
+      loop
+      playsinline
+      class="video-background"
+      oncanplay="this.play()"
+      onloadedmetadata="this.muted = true"
+    >
       <source src="../../../../../assets/images/trading.mp4" type="video/mp4" />
     </video>
-    <div class="flex flex-col items-center justify-center lg:gap-[80px] md:gap-[40px] gap-[32px] h-full">
+    <div class="flex flex-col items-center justify-center lg:gap-[80px] md:gap-[40px] gap-[32px] h-full relative z-10">
       <div class="desktop-heading-h4 greyScale-white max-w-[1196px] text-center">
         Since our inception in 2015, we've been fusing advanced technology and financial data know-how to empower our
         clients worldwide to achieve business success.
@@ -27,4 +36,5 @@
       </div>
     </div>
   </div>
+  <div class="absolute top-0 left-0 w-full h-full bg-black opacity-70 z-0"></div>
 </section>

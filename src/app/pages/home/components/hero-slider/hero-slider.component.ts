@@ -26,9 +26,8 @@ export class HeroSliderComponent implements OnDestroy {
   createTypedInstance() {
     if (this.slides && this.slides.length) {
       const capitalizedWordsArray = this.slides
-        .map((slide) => slide.subtitle?.split(' ')[1]?.split(',')[0] || '') // handle potential undefined values
-        .filter((word) => word) // filter out any empty strings
-        .map((word) => `${word.charAt(0).toUpperCase()}${word.slice(1)},`); // capitalize the first letter and append a comma
+        .flatMap((slide) => slide.subtitle?.split(' ')[1]?.split(',').slice(0, 1) || [])
+        .map((word) => `${word},`);
 
       this.typedInstance = new Typed(this.typedElement.nativeElement, {
         ...TYPED_OPTIONS,

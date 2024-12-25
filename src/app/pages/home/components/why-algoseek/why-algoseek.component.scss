@@ -1,6 +1,7 @@
 .why-algoseek-bg {
   position: relative;
   z-index: 2;
+
   &::before {
     content: '';
     width: 1344px;
@@ -14,6 +15,7 @@
     mix-blend-mode: lighten;
     filter: blur(200px);
     z-index: 1;
+
     @media screen and (max-width: 768px) {
       position: absolute;
       left: -306px;
@@ -25,6 +27,208 @@
       mix-blend-mode: lighten;
       background: var(--algoseek-color-accent);
       filter: blur(200px);
+    }
+  }
+
+  .spark-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    overflow: hidden;
+    .spark-line {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 30px;
+      border-radius: 40%;
+      opacity: 1;
+      display: none;
+    }
+
+    .spark-line-1 {
+      top: 96px;
+      left: 10%;
+      animation-delay: 0s !important;
+      animation: spark-animation-horizontal-left-to-right 2s linear 1 forwards;
+      display: block;
+      animation-delay: 0.4s !important;
+      animation: spark-animation-horizontal-left-to-right 1s cubic-bezier(0.4, 0.1, 0.25, 1) forwards;
+      @keyframes spark-animation-horizontal-left-to-right {
+        100% {
+          transform: translateX(65vw);
+        }
+      }
+      @media screen and (max-width: 767px) {
+        top: 42px;
+      }
+      @media screen and (max-width: 640px) {
+        top: 40px;
+      }
+    }
+
+    .spark-line-2 {
+      top: 222px;
+      left: 98%;
+      animation-delay: 0.4s !important;
+      animation: spark-animation-horizontal-right-to-left 1s cubic-bezier(0.4, 0.1, 0.25, 1) forwards;
+      display: block;
+      @keyframes spark-animation-horizontal-right-to-left {
+        100% {
+          transform: translateX(-70vw);
+        }
+      }
+      @media screen and (max-width: 1279px) {
+        top: 237px;
+      }
+      @media screen and (max-width: 1023px) {
+        top: 212px;
+      }
+      @media screen and (max-width: 767px) {
+        top: 179px;
+        left: 90%;
+      }
+      @media screen and (max-width: 640px) {
+        top: 175px;
+      }
+      @media screen and (max-width: 445px) {
+        top: 200px;
+      }
+      @media screen and (max-width: 427px) {
+        top: 220px;
+      }
+    }
+
+    .spark-line-3 {
+      top: 346px;
+      left: 45%;
+      animation-delay: 0.4s !important;
+      animation: spark-animation-horizontal-left-to-right 1s cubic-bezier(0.4, 0.1, 0.25, 1) forwards;
+      display: block;
+      @keyframes spark-animation-horizontal-left-to-right {
+        100% {
+          transform: translateX(43vw);
+        }
+      }
+      @media screen and (max-width: 1279px) {
+        top: 376px;
+        left: 35%;
+      }
+      @media screen and (max-width: 1023px) {
+        top: 356px;
+      }
+      @media screen and (max-width: 767px) {
+        top: 315px;
+      }
+      @media screen and (max-width: 525px) {
+        top: 335px;
+      }
+      @media screen and (max-width: 445px) {
+        top: 380px;
+      }
+      @media screen and (max-width: 427px) {
+        top: 402px;
+      }
+      @media screen and (max-width: 362px) {
+        top: 425px;
+      }
+    }
+
+    .spark-line-4 {
+      top: 470px;
+      left: 70%;
+      animation-delay: 0.4s !important;
+      animation: spark-animation-horizontal-right-to-left 1s cubic-bezier(0.4, 0.1, 0.25, 1) forwards;
+      display: block;
+      @keyframes spark-animation-horizontal-right-to-left {
+        100% {
+          transform: translateX(-50vw);
+        }
+      }
+      @media screen and (max-width: 1279px) {
+        top: 518px;
+      }
+      @media screen and (max-width: 1023px) {
+        top: 497px;
+      }
+      @media screen and (max-width: 767px) {
+        top: 450px;
+      }
+      @media screen and (max-width: 525px) {
+        top: 493px;
+      }
+      @media screen and (max-width: 461px) {
+        top: 515px;
+      }
+      @media screen and (max-width: 445px) {
+        top: 560px;
+      }
+      @media screen and (max-width: 427px) {
+        top: 583px;
+      }
+      @media screen and (max-width: 391px) {
+        top: 605px;
+      }
+      @media screen and (max-width: 362px) {
+        top: 628px;
+      }
+    }
+
+    .spark-line-5 {
+      animation: spark-animation-vertical 1s cubic-bezier(0.4, 0.1, 0.25, 1) forwards;
+      width: 30px;
+      height: 30px;
+      left: 705px;
+      top: 86%;
+      display: block;
+      animation-delay: 0.4s !important;
+      @keyframes spark-animation-vertical {
+        0% {
+          transform: translateY(0vh);
+        }
+        100% {
+          transform: translateY(-24vh);
+        }
+      }
+      @media screen and (max-width: 1535px) {
+        left: 625px;
+      }
+      @media screen and (max-width: 1279px) {
+        left: 482px;
+      }
+      @media screen and (max-width: 1023px) {
+        left: 355px;
+      }
+      @media screen and (max-width: 767px) {
+        left: 290px;
+      }
+      @media screen and (max-width: 575px) {
+        left: 47.5%;
+      }
+      @media screen and (max-width: 525px) {
+        left: 47%;
+      }
+      @media screen and (max-width: 445px) {
+        left: 47%;
+      }
+      @media screen and (max-width: 427px) {
+        left: 46%;
+      }
+      @media screen and (max-width: 425px) {
+        left: 46%;
+      }
+      @media screen and (max-width: 391px) {
+        left: 46%;
+      }
+      @media screen and (max-width: 372px) {
+        left: 46%;
+      }
+      @media screen and (max-width: 362px) {
+        left: 46%;
+      }
     }
   }
 }

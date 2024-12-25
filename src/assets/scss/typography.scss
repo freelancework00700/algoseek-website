@@ -140,6 +140,9 @@
     line-height: 110%;
   }
 }
+.helvetica-font {
+  font-family: 'Helvetica' !important;
+}
 .desktop-subheader a {
   font-family: 'Helvetica';
   font-size: 26px;
@@ -221,6 +224,7 @@
 }
 .theme-button:hover {
   transform: scale(1.02);
+  background-color: var(--algoseek-color-accent-dark);
 } 
 .desktop-links-nav {
   font-family: 'Proxima Nova';

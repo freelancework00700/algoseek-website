@@ -13,7 +13,7 @@
                 class="outline-none shadow-none border-none bg-greyScale-dark py-3 desktop-body-text w-[273px] text-white"
               />
             </div>
-            <div class="bg-greyScale-white h-12 w-12 rounded-full flex items-center justify-center">
+            <div class="bg-greyScale-white h-12 w-12 rounded-full flex items-center justify-center send-button">
               <img src="../../../assets/images/share-icon.svg" alt="share-icon" />
             </div>
           </div>
@@ -31,7 +31,7 @@
             </div>
           </div>
           @for(link of footerLinks() | slice : 0 : 3; track link) {
-            <a class="item algoseek-menu__link text-darker-gray mb-12">
+            <a class="item algoseek-menu__link text-darker-gray mb-6">
               {{ link.label }}
             </a>
           }
@@ -46,7 +46,7 @@
             </div>
           </div>
           @for(link of footerLinks() | slice : 3 : 6; track link) {
-            <a class="item algoseek-menu__link text-darker-gray mb-12">
+            <a class="item algoseek-menu__link text-darker-gray mb-6">
               {{ link.label }}
             </a>
           }
@@ -61,7 +61,7 @@
             </div>
           </div>
           @for(link of footerLinks() | slice : 6 : 11; track link) {
-            <a class="item algoseek-menu__link text-darker-gray mb-12">
+            <a class="item algoseek-menu__link text-darker-gray mb-6">
               {{ link.label }}
             </a>
           }
@@ -76,7 +76,7 @@
             </div>
           </div>
           @for(link of footerLinks() | slice : 11 : 15; track link) {
-            <a class="item algoseek-menu__link text-darker-gray mb-12">
+            <a class="item algoseek-menu__link text-darker-gray mb-6">
               {{ link.label }}
             </a>
           }
