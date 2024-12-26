@@ -1,20 +1,19 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { HomeService } from '../../shared/services/home.service';
 
 @Component({
   selector: 'app-footer',
+  imports: [CommonModule],
   styleUrl: './footer.component.scss',
   templateUrl: './footer.component.html',
-  imports: [CommonModule]
 })
 export class FooterComponent {
-  
   dropdowns: { [key: string]: boolean } = {
-    comingSoon: false,
-    whatsNew: false,
     legal: false,
+    whatsNew: false,
     resources: false,
+    comingSoon: false,
   };
 
   constructor(private homeService: HomeService) {}
@@ -24,7 +23,6 @@ export class FooterComponent {
   }
 
   toggleDropdown(section: string) {
-
     if (this.dropdowns[section]) {
       this.dropdowns[section] = false;
     } else {
@@ -33,7 +31,5 @@ export class FooterComponent {
       }
       this.dropdowns[section] = true;
     }
-    
   }
-
 }

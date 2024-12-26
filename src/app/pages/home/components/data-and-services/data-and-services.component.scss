@@ -2,29 +2,29 @@
   position: relative;
   z-index: 2;
   &::before {
+    top: 68px;
+    z-index: 1;
     content: '';
     width: 559px;
+    left: -172px;
+    opacity: 0.2;
     height: 499px;
     position: absolute;
-    left: -172px;
-    top: 68px;
-    border-radius: 559px;
-    opacity: 0.2;
-    background: var(--algoseek-color-accent);
     filter: blur(200px);
-    z-index: 1;
+    border-radius: 559px;
+    background: var(--algoseek-color-accent);
   }
   &::after {
+    z-index: 1;
     content: '';
     width: 465px;
+    opacity: 0.1;
     height: 417px;
-    position: absolute;
     right: -158px;
     bottom: -113px;
-    border-radius: 465px;
-    opacity: 0.1;
-    background: var(--algoseek-color-accent);
+    position: absolute;
     filter: blur(125px);
-    z-index: 1;
+    border-radius: 465px;
+    background: var(--algoseek-color-accent);
   }
 }

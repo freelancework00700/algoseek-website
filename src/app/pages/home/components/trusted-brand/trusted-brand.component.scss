@@ -40,7 +40,9 @@
     background-repeat: no-repeat;
     background-color: var(--algoseek-color-dark);
     background-image: url('../../../../../assets/images/right-arrow.svg');
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .swiper-button-prev::after,
@@ -65,10 +67,10 @@
     bottom: 0;
     left: auto;
     width: 40px;
-    height: 40px;
-    right: calc(50% - 120px);
     z-index: 10;
+    height: 40px;
     position: absolute;
+    right: calc(50% - 120px);
   }
 
   .swiper-button-next {
@@ -79,7 +81,9 @@
     background-repeat: no-repeat;
     background-color: var(--algoseek-color-dark);
     background-image: url('../../../../../assets/images/left-arrow.svg');
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .swiper-button-prev:hover,

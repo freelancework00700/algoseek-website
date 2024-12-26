@@ -6,13 +6,13 @@ import {
 } from '../../core/interfaces';
 import { Subject, takeUntil } from 'rxjs';
 import { HomeService } from '../../shared/services/home.service';
-import { Component, HostListener, ViewChild } from '@angular/core';
 import { ArdaDBComponent } from './components/arda-db/arda-db.component';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { HomeStatsComponent } from './components/home-stats/home-stats.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { HeroSliderComponent } from './components/hero-slider/hero-slider.component';
+import { Component, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { WhyAlgoseekComponent } from './components/why-algoseek/why-algoseek.component';
 import { DataPackagesComponent } from './components/data-packages/data-packages.component';
 import { InfraConnectComponent } from './components/infra-connect/infra-connect.component';
@@ -49,12 +49,12 @@ import { CoreExtendedReferenceDataComponent } from './components/core-extended-r
     CoreExtendedReferenceDataComponent,
   ],
 })
-export class HomeComponent {
-  isScrolled: boolean = false;
+export class HomeComponent implements OnInit, OnDestroy {
   _destroy$ = new Subject<void>();
-  @ViewChild('homeStats', { static: false }) homeStats: any;
   isHeaderVisible: boolean = true;
   previousScrollPosition: number = 0;
+  showTalkToUsButton: boolean = false;
+  @ViewChild('homeStats', { static: false }) homeStats: any;
 
   constructor(private homeService: HomeService) {}
 
@@ -74,21 +74,16 @@ export class HomeComponent {
       this.isHeaderVisible = true;
     }
     this.previousScrollPosition = scrollY;
-    
   }
 
-  scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }
-
-  checkScrollPosition() {    
+  checkScrollPosition() {
     if (this.homeStats) {
       const homeStatElement = this.homeStats.getElement();
       const homeStatTop = homeStatElement.offsetTop;
       if (window.scrollY >= homeStatTop) {
-        this.isScrolled = true;
+        this.showTalkToUsButton = true;
       } else {
-        this.isScrolled = false;
+        this.showTalkToUsButton = false;
       }
     }
   }
@@ -207,24 +202,17 @@ export class HomeComponent {
       .getDataAndServicesCardsContent()
       .pipe(takeUntil(this._destroy$))
       .subscribe({
-        next: (response) => {
-          this.homeService.dataAndServicesCards.set(response.data);
-        },
-        error: (error) => {
-          console.error(error);
-        },
+        next: (response) => this.homeService.dataAndServicesCards.set(response.data),
+        error: (error) => console.error('Error in getDataAndServicesCardsContent:', error),
       });
 
+    // 14. call getFooterLinksContent and set the data when it completes
     this.homeService
       .getFooterLinksContent()
       .pipe(takeUntil(this._destroy$))
       .subscribe({
-        next: (response) => {
-          this.homeService.footerLinks.set(response.data);
-        },
-        error: (error) => {
-          console.error(error);
-        }
+        next: (response) => this.homeService.footerLinks.set(response.data),
+        error: (error) => console.error('Error in getFooterLinksContent:', error),
       });
   }
 

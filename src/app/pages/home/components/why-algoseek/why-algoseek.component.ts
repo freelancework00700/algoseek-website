@@ -1,21 +1,21 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-why-algoseek',
   styleUrl: './why-algoseek.component.scss',
   templateUrl: './why-algoseek.component.html',
 })
-export class WhyAlgoseekComponent {
-  @ViewChild('sectionRef') sectionRef: ElementRef | undefined;
+export class WhyAlgoseekComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('sectionRef') sectionRef!: ElementRef;
   observer!: IntersectionObserver;
 
-  ngAfterViewInit(): void {    
+  ngAfterViewInit(): void {
     this.observeSection();
   }
 
   observeSection(): void {
     const options = {
-      threshold: [0.1] // triggers when 10% of screen is in view
+      threshold: [0.1], // triggers when 10% of screen is in view
     };
 
     this.observer = new IntersectionObserver(this.startSparkleAnimation.bind(this), options);
@@ -25,7 +25,7 @@ export class WhyAlgoseekComponent {
   }
 
   startSparkleAnimation(entries: IntersectionObserverEntry[]): void {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         this.triggerAnimation();
       } else {
@@ -42,7 +42,7 @@ export class WhyAlgoseekComponent {
       });
     }
   }
-  
+
   resetAnimations(): void {
     const sparkleElements = document.querySelectorAll<HTMLElement>('.spark-line');
     sparkleElements.forEach((element) => {
@@ -51,7 +51,7 @@ export class WhyAlgoseekComponent {
     });
   }
 
-  ngOnDistroy() {
+  ngOnDestroy(): void {
     this.observer?.disconnect();
   }
 }

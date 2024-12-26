@@ -219,13 +219,15 @@
     height: 48px;
   }
   & {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
   }
 }
 .theme-button:hover {
   transform: scale(1.02);
   background-color: var(--algoseek-color-accent-dark);
-} 
+}
 .desktop-links-nav {
   font-family: 'Proxima Nova';
   font-size: 18px;

@@ -1,8 +1,8 @@
 .slide-box {
   display: flex;
   flex-flow: column;
-  justify-content: center;
   text-align: center;
+  justify-content: center;
   min-height: calc(100vh - 140px);
   @media screen and (max-width: 1023px) {
     min-height: calc(100vh - 102px);

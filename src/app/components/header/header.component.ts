@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { HomeService } from '../../shared/services/home.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { HomeService } from '../../shared/services/home.service';
   styleUrl: './header.component.scss',
   templateUrl: './header.component.html',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   menuOpen: boolean = false;
   isMobile: boolean = false;
 

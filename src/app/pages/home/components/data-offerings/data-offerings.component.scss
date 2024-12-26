@@ -1,19 +1,19 @@
 .line-bottom {
   position: relative;
   &::before {
+    left: 50%;
+    width: 1px;
     content: '';
+    height: 20px;
+    bottom: -21px;
     position: absolute;
     background: var(--algoseek-color-lighter-gray);
-    height: 20px;
-    width: 1px;
-    left: 50%;
-    bottom: -21px;
   }
   &:last-child {
     &::before {
       content: '';
-      position: absolute;
       display: none;
+      position: absolute;
     }
   }
 }
@@ -21,11 +21,11 @@
   position: relative;
   &::after {
     content: '';
-    position: absolute;
-    background: var(--algoseek-color-lighter-gray);
     width: 20px;
     height: 1px;
-    right: -21px;
     bottom: 50%;
+    right: -21px;
+    position: absolute;
+    background: var(--algoseek-color-lighter-gray);
   }
 }

@@ -8,7 +8,7 @@ export const TYPED_OPTIONS: TypedOptions = {
   backSpeed: 50,
   backDelay: 2000,
   fadeOutDelay: 0,
+  cursorChar: '_',
   showCursor: true,
   smartBackspace: false,
-  cursorChar: '_',
 };

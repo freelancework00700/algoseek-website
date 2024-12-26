@@ -1,44 +1,48 @@
-import { Injectable, signal } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { AlgoseekApiService } from './algoseek-api.service';
 import {
-  AlgoseekConsole,
-  DataAndServices,
-  DataAndServicesCard,
-  DataOfferings,
-  FooterLinks,
+  UseCases,
   HeaderData,
   HeaderLink,
-  HomeAlgoseekConsoleIcon,
-  HomeAlgoseekConsoleIconSection,
-  HomeAlgoseekDataPackages,
-  HomeAlgoseekDataPackagesItem,
-  HomePageHeroSlider,
-  HomePageStatsNumber,
+  FooterLinks,
   RealTimeData,
+  DataOfferings,
   TrustedPartner,
-  UseCases,
+  DataAndServices,
+  AlgoseekConsole,
+  HomePageHeroSlider,
+  DataAndServicesCard,
+  HomePageStatsNumber,
+  HomeAlgoseekConsoleIcon,
+  HomeAlgoseekDataPackages,
+  HomeAlgoseekConsoleIconSection,
+  HomeAlgoseekDataPackagesItem,
 } from '../../core/interfaces';
+import { Observable } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
+import { AlgoseekApiService } from './algoseek-api.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 export interface ApiResponse<T> {
   data: T;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class HomeService {
   headerLinks = this.createSignal<HeaderLink[]>([]);
-  homePageHeroSlides = this.createSignal<HomePageHeroSlider[]>([]);
-  statsNumbers = this.createSignal<HomePageStatsNumber[]>([]);
+  footerLinks = this.createSignal<FooterLinks[]>([]);
   trustedPartners = this.createSignal<TrustedPartner[]>([]);
+  statsNumbers = this.createSignal<HomePageStatsNumber[]>([]);
+  homePageHeroSlides = this.createSignal<HomePageHeroSlider[]>([]);
+  dataAndServicesCards = this.createSignal<DataAndServicesCard[]>([]);
+  hpAlgoseekConsoleIcons = this.createSignal<HomeAlgoseekConsoleIconSection>({});
+  useCases = this.createSignal<UseCases>({ title: '', images: [], subtitle: '' });
+  hpAlgoseekDataPackagesItem = this.createSignal<HomeAlgoseekDataPackagesItem[]>([]);
+
   realTimeData = this.createSignal<RealTimeData>({
     title: '',
     description: '',
     subtitle: '',
   });
-  useCases = this.createSignal<UseCases>({ title: '', images: [], subtitle: '' });
+
   dataOfferings = this.createSignal<DataOfferings>({
     id: 1,
     title: '',
@@ -48,19 +52,13 @@ export class HomeService {
     extended_reference_data: [],
     market_data: [],
   });
-  hpAlgoseekDataPackages = this.createSignal<HomeAlgoseekDataPackages>({
-    title: '',
-    description: 'Data Packages',
-    image: '',
-    is_new: false,
-  });
-  hpAlgoseekDataPackagesItem = this.createSignal<HomeAlgoseekDataPackagesItem[]>([]);
+
   algoseekConsole = this.createSignal<AlgoseekConsole>({
     title: '',
     description: '',
     content: '',
   });
-  hpAlgoseekConsoleIcons = this.createSignal<HomeAlgoseekConsoleIconSection>({});
+
   dataAndServices = this.createSignal<DataAndServices>({
     id: 1,
     data_services_cards: [],
@@ -68,12 +66,17 @@ export class HomeService {
     subtitle: '',
     description: '',
   });
-  dataAndServicesCards = this.createSignal<DataAndServicesCard[]>([]);
-  footerLinks = this.createSignal<FooterLinks[]>([]);
+
+  hpAlgoseekDataPackages = this.createSignal<HomeAlgoseekDataPackages>({
+    title: '',
+    description: 'Data Packages',
+    image: '',
+    is_new: false,
+  });
 
   constructor(
-    private apiService: AlgoseekApiService,
     private http: HttpClient,
+    private apiService: AlgoseekApiService,
   ) {}
 
   private createSignal<T>(defaultValue: T) {
@@ -83,7 +86,7 @@ export class HomeService {
   private fetchData<T>(endpoint: string, fields: string[], filters?: Record<string, any>) {
     let params = new HttpParams().set('fields', fields.join(','));
     if (filters) {
-      filters['forEach']((filter: { key: string[], value: string }) => {
+      filters['forEach']((filter: { key: string[]; value: string }) => {
         const key = filter.key;
         const value = filter.value;
         if (Array.isArray(key)) {
@@ -111,11 +114,11 @@ export class HomeService {
         'links.header_links_id.url',
       ],
       [
-        { 
+        {
           key: ['section', 'name', '_eq'],
-          value: 'main'
-        }
-      ]
+          value: 'main',
+        },
+      ],
     );
   }
 
