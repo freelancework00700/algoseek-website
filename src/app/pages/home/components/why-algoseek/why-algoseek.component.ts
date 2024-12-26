@@ -7,6 +7,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 })
 export class WhyAlgoseekComponent {
   @ViewChild('sectionRef') sectionRef: ElementRef | undefined;
+  observer!: IntersectionObserver;
 
   ngAfterViewInit(): void {    
     this.observeSection();
@@ -14,12 +15,12 @@ export class WhyAlgoseekComponent {
 
   observeSection(): void {
     const options = {
-      threshold: 0.6 // triggers when 60% of screen is in view
+      threshold: [0.1] // triggers when 10% of screen is in view
     };
 
-    const observer = new IntersectionObserver(this.startSparkleAnimation.bind(this), options);
+    this.observer = new IntersectionObserver(this.startSparkleAnimation.bind(this), options);
     if (this.sectionRef) {
-      observer.observe(this.sectionRef.nativeElement);
+      this.observer.observe(this.sectionRef.nativeElement);
     }
   }
 
@@ -34,7 +35,7 @@ export class WhyAlgoseekComponent {
   }
 
   triggerAnimation(): void {
-    const sparkleElements = document.querySelectorAll('.spark-line');
+    const sparkleElements = document.querySelectorAll<HTMLElement>('.spark-line');
     if (sparkleElements) {
       sparkleElements.forEach((element, index) => {
         element.classList.add(`spark-line-${index + 1}`);
@@ -43,11 +44,14 @@ export class WhyAlgoseekComponent {
   }
   
   resetAnimations(): void {
-    const sparkleElements = document.querySelectorAll('.spark-line');
+    const sparkleElements = document.querySelectorAll<HTMLElement>('.spark-line');
     sparkleElements.forEach((element) => {
-      const sparkleElement = element as HTMLElement;
-      sparkleElement.classList.remove('spark-line-1', 'spark-line-2', 'spark-line-3', 'spark-line-4', 'spark-line-5');
-      void sparkleElement.offsetWidth;
+      element.classList.remove('spark-line-1', 'spark-line-2', 'spark-line-3', 'spark-line-4', 'spark-line-5');
+      void element.offsetWidth;
     });
+  }
+
+  ngOnDistroy() {
+    this.observer?.disconnect();
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AlgoseekApiService } from './algoseek-api.service';
 import {
@@ -8,7 +8,9 @@ import {
   DataAndServicesCard,
   DataOfferings,
   FooterLinks,
+  HeaderData,
   HeaderLink,
+  HomeAlgoseekConsoleIcon,
   HomeAlgoseekConsoleIconSection,
   HomeAlgoseekDataPackages,
   HomeAlgoseekDataPackagesItem,
@@ -19,21 +21,25 @@ import {
   UseCases,
 } from '../../core/interfaces';
 
+export interface ApiResponse<T> {
+  data: T;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class HomeService {
-  headerLinks = signal<HeaderLink[]>([]);
-  homePageHeroSlides = signal<HomePageHeroSlider[]>([]);
-  statsNumbers = signal<HomePageStatsNumber[]>([]);
-  trustedPartners = signal<TrustedPartner[]>([]);
-  realTimeData = signal<RealTimeData>({
+  headerLinks = this.createSignal<HeaderLink[]>([]);
+  homePageHeroSlides = this.createSignal<HomePageHeroSlider[]>([]);
+  statsNumbers = this.createSignal<HomePageStatsNumber[]>([]);
+  trustedPartners = this.createSignal<TrustedPartner[]>([]);
+  realTimeData = this.createSignal<RealTimeData>({
     title: '',
     description: '',
     subtitle: '',
   });
-  useCases = signal<UseCases>({ title: '', images: [], subtitle: '' });
-  dataOfferings = signal<DataOfferings>({
+  useCases = this.createSignal<UseCases>({ title: '', images: [], subtitle: '' });
+  dataOfferings = this.createSignal<DataOfferings>({
     id: 1,
     title: '',
     subtitle: '',
@@ -42,117 +48,146 @@ export class HomeService {
     extended_reference_data: [],
     market_data: [],
   });
-  hpAlgoseekDataPackages = signal<HomeAlgoseekDataPackages>({
+  hpAlgoseekDataPackages = this.createSignal<HomeAlgoseekDataPackages>({
     title: '',
     description: 'Data Packages',
     image: '',
     is_new: false,
   });
-  hpAlgoseekDataPackagesItem = signal<HomeAlgoseekDataPackagesItem[]>([]);
-  algoseekConsole = signal<AlgoseekConsole>({
+  hpAlgoseekDataPackagesItem = this.createSignal<HomeAlgoseekDataPackagesItem[]>([]);
+  algoseekConsole = this.createSignal<AlgoseekConsole>({
     title: '',
     description: '',
     content: '',
   });
-  hpAlgoseekConsoleIcons = signal<HomeAlgoseekConsoleIconSection>({});
-  dataAndServices = signal<DataAndServices>({
+  hpAlgoseekConsoleIcons = this.createSignal<HomeAlgoseekConsoleIconSection>({});
+  dataAndServices = this.createSignal<DataAndServices>({
     id: 1,
     data_services_cards: [],
     title: '',
     subtitle: '',
     description: '',
   });
-  dataAndServicesCards = signal<DataAndServicesCard[]>([]);
-  footerLinks = signal<FooterLinks[]>([]);
+  dataAndServicesCards = this.createSignal<DataAndServicesCard[]>([]);
+  footerLinks = this.createSignal<FooterLinks[]>([]);
 
   constructor(
     private apiService: AlgoseekApiService,
     private http: HttpClient,
   ) {}
 
-  getHeaderLinks(): Observable<any> {
-    const url = `${
-      this.apiService._BASE_URL
-    }/items/header?fields[]=title_block,description,is_link&fields[]=section.name&fields[]=links.header_links_id.label&fields[]=links.header_links_id.section&fields[]=links.header_links_id.order&fields[]=links.header_links_id.visible&fields[]=links.header_links_id.url&filter[section][name][_eq]=main`;
-    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  private createSignal<T>(defaultValue: T) {
+    return signal<T>(defaultValue);
   }
 
-  getHeroSliderContent(): Observable<any> {
-    const url = `${this.apiService._BASE_URL}/items/slider?fields[]=id,title,subtitle,order,description`;
-    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  private fetchData<T>(endpoint: string, fields: string[], filters?: Record<string, any>) {
+    let params = new HttpParams().set('fields', fields.join(','));
+    if (filters) {
+      filters['forEach']((filter: { key: string[], value: string }) => {
+        const key = filter.key;
+        const value = filter.value;
+        if (Array.isArray(key)) {
+          const filterStr = key.join('][');
+          params = params.set(`filter[${filterStr}]`, value);
+        }
+      });
+    }
+    const url = `${this.apiService._BASE_URL}/items/${endpoint}`;
+    return this.http.get<any>(url, { headers: this.apiService.getHeaders(), params });
   }
 
-  getHomeStatsNumbers(): Observable<any> {
-    const url = `${this.apiService._BASE_URL}/items/stats_numbers?fields[]=number,description`;
-    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  getHeaderLinks(): Observable<ApiResponse<HeaderData[]>> {
+    return this.fetchData<HeaderData>(
+      'header',
+      [
+        'title_block',
+        'description',
+        'is_link',
+        'section.name',
+        'links.header_links_id.label',
+        'links.header_links_id.section',
+        'links.header_links_id.order',
+        'links.header_links_id.visible',
+        'links.header_links_id.url',
+      ],
+      [
+        { 
+          key: ['section', 'name', '_eq'],
+          value: 'main'
+        }
+      ]
+    );
   }
 
-  getRealTimeDataContent(): Observable<any> {
-    const url = `${this.apiService._BASE_URL}/items/real_time_data_section?fields[]=title,subtitle,description`;
-    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  getHeroSliderContent(): Observable<ApiResponse<HomePageHeroSlider[]>> {
+    return this.fetchData<HomePageHeroSlider>('slider', ['id', 'title', 'subtitle', 'order', 'description']);
   }
 
-  getTrustedPartnersContent(): Observable<any> {
-    const url = `${this.apiService._BASE_URL}/items/trusted_partners?fields[]=id,order,partner_logo`;
-    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  getHomeStatsNumbers(): Observable<ApiResponse<HomePageStatsNumber[]>> {
+    return this.fetchData<HomePageStatsNumber>('stats_numbers', ['number', 'description']);
   }
 
-  getUseCasesContent(): Observable<any> {
-    const url = `${
-      this.apiService._BASE_URL
-    }/items/use_cases_section?fields[]=title,subtitle,images.use_cases_images_id.image,images.use_cases_images_id.order`;
-    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  getRealTimeDataContent(): Observable<ApiResponse<RealTimeData>> {
+    return this.fetchData<RealTimeData>('real_time_data_section', ['title', 'subtitle', 'description']);
   }
 
-  getDataOfferingsContent(): Observable<any> {
-    const url = `${
-      this.apiService._BASE_URL
-    }/items/data_offerings?fields%5B%5D=*.data_offering_icons_id.label&fields%5B%5D=*.data_offering_icons_id.svg`;
-    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  getTrustedPartnersContent(): Observable<ApiResponse<TrustedPartner[]>> {
+    return this.fetchData<TrustedPartner>('trusted_partners', ['id', 'order', 'partner_logo']);
   }
 
-  getHpDataPackagesContent(): Observable<any> {
-    const url = `${this.apiService._BASE_URL}/items/data_packages?fields[]=is_new,title,description,items,image`;
-    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  getUseCasesContent(): Observable<ApiResponse<UseCases>> {
+    return this.fetchData<UseCases>('use_cases_section', [
+      'title',
+      'subtitle',
+      'images.use_cases_images_id.image',
+      'images.use_cases_images_id.order',
+    ]);
   }
 
-  getHpDataPackagesItemContent(): Observable<any> {
-    const url = `${this.apiService._BASE_URL}/items/data_packages_item?fields[]=name,description`;
-    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  getDataOfferingsContent(): Observable<ApiResponse<DataOfferings[]>> {
+    return this.fetchData<DataOfferings>('data_offerings', [
+      '*.data_offering_icons_id.label',
+      '*.data_offering_icons_id.svg',
+    ]);
   }
 
-  getAlgoseekConsoleContent(): Observable<any> {
-    const url = `${
-      this.apiService._BASE_URL
-    }/items/algoseek_console?fields[]=title,content,description`;
-    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  getHpDataPackagesContent(): Observable<ApiResponse<HomeAlgoseekDataPackages[]>> {
+    return this.fetchData<HomeAlgoseekDataPackages>('data_packages', [
+      'is_new',
+      'title',
+      'description',
+      'items',
+      'image',
+    ]);
   }
 
-  getHpAlgoseekConsoleIconsContent(): Observable<any> {
-    const url = `${
-      this.apiService._BASE_URL
-    }/items/hp_algoseek_console_icons?fields[]=id,name,svg`;
-    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  getHpDataPackagesItemContent(): Observable<ApiResponse<HomeAlgoseekDataPackagesItem[]>> {
+    return this.fetchData<HomeAlgoseekDataPackagesItem>('data_packages_item', ['name', 'description']);
   }
 
-  getDataAndServicesContent(): Observable<any> {
-    const url = `${
-      this.apiService._BASE_URL
-    }/items/data_and_services?fields[]=id,title,subtitle,description&fields[]=data_services_cards`;
-    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  getAlgoseekConsoleContent(): Observable<ApiResponse<AlgoseekConsole[]>> {
+    return this.fetchData<AlgoseekConsole>('algoseek_console', ['title', 'content', 'description']);
   }
 
-  getDataAndServicesCardsContent(): Observable<any> {
-    const url = `${
-      this.apiService._BASE_URL
-    }/items/cards?fields[]=name,image_url`;
-    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  getHpAlgoseekConsoleIconsContent(): Observable<ApiResponse<HomeAlgoseekConsoleIcon[]>> {
+    return this.fetchData<HomeAlgoseekConsoleIcon>('hp_algoseek_console_icons', ['id', 'name', 'svg']);
   }
 
-  getFooterLinksContent(): Observable<any> {
-    const url = `${
-      this.apiService._BASE_URL
-    }/items/footer_links?fields[]=label,order,url`;
-    return this.http.get(url, { headers: this.apiService.getHeaders() });
+  getDataAndServicesContent(): Observable<ApiResponse<DataAndServices[]>> {
+    return this.fetchData<DataAndServices>('data_and_services', [
+      'id',
+      'title',
+      'subtitle',
+      'description',
+      'data_services_cards',
+    ]);
+  }
+
+  getDataAndServicesCardsContent(): Observable<ApiResponse<DataAndServicesCard[]>> {
+    return this.fetchData<DataAndServicesCard>('cards', ['name', 'image_url']);
+  }
+
+  getFooterLinksContent(): Observable<ApiResponse<FooterLinks[]>> {
+    return this.fetchData<FooterLinks>('footer_links', ['label', 'order', 'url']);
   }
 }
