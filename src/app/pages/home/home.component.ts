@@ -1,5 +1,4 @@
 import {
-  HeaderData,
   HomePageStatsNumber,
   HomeAlgoseekConsoleIcon,
   HomeAlgoseekConsoleIconSection,
@@ -7,8 +6,6 @@ import {
 import { Subject, takeUntil } from 'rxjs';
 import { HomeService } from '../../shared/services/home.service';
 import { ArdaDBComponent } from './components/arda-db/arda-db.component';
-import { HeaderComponent } from '../../components/header/header.component';
-import { FooterComponent } from '../../components/footer/footer.component';
 import { HomeStatsComponent } from './components/home-stats/home-stats.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { HeroSliderComponent } from './components/hero-slider/hero-slider.component';
@@ -31,8 +28,6 @@ import { CoreExtendedReferenceDataComponent } from './components/core-extended-r
   templateUrl: './home.component.html',
   imports: [
     ArdaDBComponent,
-    HeaderComponent,
-    FooterComponent,
     ContactUsComponent,
     HomeStatsComponent,
     HeroSliderComponent,
@@ -51,29 +46,18 @@ import { CoreExtendedReferenceDataComponent } from './components/core-extended-r
 })
 export class HomeComponent implements OnInit, OnDestroy {
   _destroy$ = new Subject<void>();
-  isHeaderVisible: boolean = true;
-  previousScrollPosition: number = 0;
   showTalkToUsButton: boolean = false;
   @ViewChild('homeStats', { static: false }) homeStats: any;
 
   constructor(private homeService: HomeService) {}
 
   ngOnInit() {
-    this.isHeaderVisible = true;
     this.homePageContentSubscriptions();
   }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
     this.checkScrollPosition();
-
-    const scrollY = window.scrollY;
-    if (scrollY > this.previousScrollPosition) {
-      this.isHeaderVisible = false;
-    } else {
-      this.isHeaderVisible = true;
-    }
-    this.previousScrollPosition = scrollY;
   }
 
   checkScrollPosition() {
@@ -89,14 +73,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   homePageContentSubscriptions() {
-    // 1. call getHeaderLinks and set the data when it completes
-    this.homeService
-      .getHeaderLinks()
-      .pipe(takeUntil(this._destroy$))
-      .subscribe({
-        next: (response) => this.setHeaderLinks(response.data[0]),
-        error: (error) => console.error('Error in getHeaderLinks:', error),
-      });
 
     // 2. all getHeroSliderContent and set the data when it completes
     this.homeService
@@ -205,15 +181,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         next: (response) => this.homeService.dataAndServicesCards.set(response.data),
         error: (error) => console.error('Error in getDataAndServicesCardsContent:', error),
       });
-
-    // 14. call getFooterLinksContent and set the data when it completes
-    this.homeService
-      .getFooterLinksContent()
-      .pipe(takeUntil(this._destroy$))
-      .subscribe({
-        next: (response) => this.homeService.footerLinks.set(response.data),
-        error: (error) => console.error('Error in getFooterLinksContent:', error),
-      });
   }
 
   // function to set home stats numbers
@@ -238,14 +205,6 @@ export class HomeComponent implements OnInit, OnDestroy {
           description: String(item.description),
         };
       }),
-    );
-  }
-
-  // function to set header links
-  private setHeaderLinks(data: HeaderData) {
-    const visibleLinks = data.links.filter((link) => link.header_links_id.visible !== false);
-    this.homeService.headerLinks.set(
-      visibleLinks.map((link) => link.header_links_id).sort((a, b) => a.order - b.order),
     );
   }
 

@@ -18,6 +18,14 @@
   opacity: 0;
 }
 
+.overlay-dark {
+  background-color: var(--algoseek-color-black);
+}
+
+.overlay-white {
+  background-color: var(--algoseek-color-white);
+}
+
 .overlay.show {
   opacity: 1;
   display: flex;
@@ -30,6 +38,7 @@
   cursor: pointer;
   font-size: 24px;
   background: none;
+  margin-right: 10px;
 }
 
 /* overlay navigation list */

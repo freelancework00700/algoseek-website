@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnChanges, OnInit, Renderer2 } from '@angular/core';
 import { HomeService } from '../../shared/services/home.service';
 
 @Component({
@@ -8,11 +8,22 @@ import { HomeService } from '../../shared/services/home.service';
   styleUrl: './header.component.scss',
   templateUrl: './header.component.html',
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnChanges {
   menuOpen: boolean = false;
   isMobile: boolean = false;
+  @Input() isDarkHeader!: boolean;
 
-  constructor(private homeService: HomeService) {}
+  constructor(
+    private homeService: HomeService,
+    private renderer: Renderer2
+  ) {
+  }
+
+  ngOnChanges() {
+    if (this.isDarkHeader) {
+      this.renderer.setStyle(document.body, 'background-color', '#000');
+    }
+  }
 
   ngOnInit() {
     this.checkScreenSize();

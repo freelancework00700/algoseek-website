@@ -1,7 +1,7 @@
 <section class="grid grid-cols-12 lg:px-[80px] md:px-[30px] px-[16px]">
   <div class="xl:col-span-4 lg:col-span-4 md:col-span-3 sm:col-span-3 col-span-6">
     <div class="lg:py-[42px] md:py-[30px] sm:py-[22px] py-[12px]">
-      <img src="../../../assets/images/main_logo.png" alt="main-logo" class="lg:h-[56px] md:h-[36px] h-[36px]" />
+      <img [src]="isDarkHeader ? '../../../assets/images/main_logo_white.png' : '../../../assets/images/main_logo.png'" alt="main-logo" class="lg:h-[56px] md:h-[36px] h-[36px]" />
     </div>
   </div>
 
@@ -9,7 +9,7 @@
     <div class="hidden sm:flex items-center justify-between lg:py-[59px] md:py-[40px] py-[28px] md:pl-0 pl-2">
       @for (link of headerLinks(); track link) {
         <span class="nav-item">
-          <a class="desktop-links-nav greyScale-dark cursor-pointer">
+          <a class="desktop-links-nav cursor-pointer" [class]="isDarkHeader ? 'greyScale-white' : 'greyScale-dark'">
             {{ link.label }}
           </a>
         </span>
@@ -19,7 +19,7 @@
     @if (isMobile) {
       <div class="sm:hidden flex justify-end items-center h-full" (click)="openMenu()">
         <div>
-          <img src="../../../assets/images/humberger_menu.svg" alt="menu" />
+          <img [src]="isDarkHeader ? '../../../assets/images/humberger_menu_white.svg' : '../../../assets/images/humberger_menu.svg'" alt="menu" />
         </div>
       </div>
     }
@@ -39,17 +39,17 @@
 </section>
 
 <!-- full-screen overlay menu (visible on small screens) -->
-<div class="overlay w-full relative" [ngClass]="{ show: menuOpen }">
+<div class="overlay w-full relative" [class]="isDarkHeader ? 'overlay-dark' : 'overlay-white'" [ngClass]="{ show: menuOpen }">
   <div class="flex flex-col justify-between w-full h-full">
     <div class="flex justify-between items-center w-full px-4 py-3 border-b border-[#E6E8EB]">
-      <img src="../../../assets/images/main_logo.png" alt="main-logo" class="h-[36px]" />
-      <button class="close-button" (click)="closeMenu()" aria-label="Close Menu">✕</button>
+      <img [src]="isDarkHeader ? '../../../assets/images/main_logo_white.png' : '../../../assets/images/main_logo.png'" alt="main-logo" class="h-[36px]" />
+      <button class="close-button" [class]="isDarkHeader ? 'text-white' : ''" (click)="closeMenu()" aria-label="Close Menu">✕</button>
     </div>
 
-    <ul class="overlay-nav-list w-full bg-white">
+    <ul class="w-full overlay-nav-list">
       @for (link of headerLinks(); track link) {
         <li class="py-[25px] nav-item">
-          <a (click)="closeMenu()" class="desktop-links-nav greyScale-dark">{{ link.label }}</a>
+          <a (click)="closeMenu()" class="desktop-links-nav" [class]="isDarkHeader ? 'greyScale-white' : 'greyScale-dark'">{{ link.label }}</a>
         </li>
       }
     </ul>
