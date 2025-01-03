@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, Input, OnChanges, OnInit, Renderer2 } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, Renderer2 } from '@angular/core';
 import { HomeService } from '../../shared/services/home.service';
 
 @Component({
@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit, OnChanges {
   menuOpen: boolean = false;
   isMobile: boolean = false;
   @Input() isDarkHeader!: boolean;
+  @Output() menuStateChanged: EventEmitter<boolean> = new EventEmitter();
 
   constructor(
     private homeService: HomeService,
@@ -40,9 +41,13 @@ export class HeaderComponent implements OnInit, OnChanges {
 
   openMenu() {
     this.menuOpen = true;
+    this.menuStateChanged.emit(this.menuOpen);
+    this.renderer.setStyle(document.body, 'overflow', 'hidden');
   }
 
   closeMenu() {
     this.menuOpen = false;
+    this.menuStateChanged.emit(this.menuOpen);
+    this.renderer.removeStyle(document.body, 'overflow');
   }
 }

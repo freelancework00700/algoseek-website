@@ -1,4 +1,4 @@
-<app-header [isDarkHeader]="isDarkHeader"
+<app-header [isDarkHeader]="isDarkHeader" (menuStateChanged)="onMenuStateChanged($event)"
 class="fixed top-0 left-0 w-full z-[1111] transform duration-500 ease-in-out"
 [class]="isHeaderVisible && isDarkHeader ? 'bg-black transition-transform' : 
 isHeaderVisible && !isDarkHeader ? 'bg-white transition-transform' : 'bg-white -translate-y-full opacity-0 transition-all'" 

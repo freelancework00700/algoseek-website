@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
   previousScrollPosition: number = 0;
   _destroy$ = new Subject<void>();
   isDarkHeader: boolean = false;
+  isMenuOpen: boolean = false;
 
   constructor(
     private homeService: HomeService,
@@ -44,12 +45,16 @@ export class AppComponent implements OnInit {
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const scrollY = window.scrollY;
-    if (scrollY > this.previousScrollPosition) {
+    if (scrollY > this.previousScrollPosition && !this.isMenuOpen) {
       this.isHeaderVisible = false;
     } else {
       this.isHeaderVisible = true;
     }
     this.previousScrollPosition = scrollY;
+  }
+
+  onMenuStateChanged(menuState: boolean) {
+    this.isMenuOpen = menuState;
   }
 
   contentSubscriptions() {
