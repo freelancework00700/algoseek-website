@@ -1,23 +1,28 @@
-<app-header 
-  [class]="isHeaderVisible ? 
-  'fixed top-0 left-0 w-full bg-white z-[1111] transform transition-transform duration-500 ease-in-out' : 
-  'fixed top-0 left-0 w-full bg-white z-[1111] transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out'" />
-<app-hero-slider />
-<app-home-stats #homeStats />
-<app-trusted-brand />
-<app-real-time-data />
-<app-data-and-services />
-<app-data-offerings />
-<app-market-data-types />
-<app-core-extended-reference-data />
-<app-data-packages />
-<app-arda-db />
-<app-algoseek-console />
-<app-data-onboarding-services />
-<app-infra-connect />
-<app-why-algoseek />
-<app-contact-us />
-<app-footer />
+<app-header
+  (menuStateChanged)="onMenuStateChanged($event)"
+  [class]="
+    isHeaderVisible
+      ? 'fixed top-0 left-0 w-full bg-white z-[1111] transform transition-transform duration-500 ease-in-out'
+      : 'fixed top-0 left-0 w-full bg-white z-[1111] transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out'
+  "
+/>
+  <div [class.blur-bg]="activeMenuLabel()"></div>
+  <app-hero-slider />
+  <app-home-stats #homeStats />
+  <app-trusted-brand />
+  <app-real-time-data />
+  <app-data-and-services />
+  <app-data-offerings />
+  <app-market-data-types />
+  <app-core-extended-reference-data />
+  <app-data-packages />
+  <app-arda-db />
+  <app-algoseek-console />
+  <app-data-onboarding-services />
+  <app-infra-connect />
+  <app-why-algoseek />
+  <app-contact-us />
+  <app-footer />
 
 <!-- scroll and talk to us button -->
 @if (showTalkToUsButton) {

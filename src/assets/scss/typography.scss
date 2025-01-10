@@ -85,6 +85,14 @@
   font-weight: 700;
   line-height: 120%;
 }
+.desktop-heading-h3.a {
+  font-family: 'Helvetica';
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 110%;
+  letter-spacing: -0.26px;
+}
 .desktop-heading-h4 {
   font-family: 'Proxima Nova';
   font-size: 30px;
@@ -101,6 +109,25 @@
   }
   @media screen and (max-width: 640px) {
     font-size: 24px;
+    line-height: 110%;
+  }
+}
+.desktop-heading-h5 {
+  font-family: 'Proxima Nova';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+  @media screen and (max-width: 1279px) {
+    font-size: 22px;
+    line-height: 114%;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 20px;
+    line-height: 112%;
+  }
+  @media screen and (max-width: 640px) {
+    font-size: 18px;
     line-height: 110%;
   }
 }
@@ -227,6 +254,13 @@
 .theme-button:hover {
   transform: scale(1.02);
   background-color: var(--algoseek-color-accent-dark);
+}
+.desktop-links-menu {
+  font-family: 'Proxima Nova';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 .desktop-links-nav {
   font-family: 'Proxima Nova';
@@ -372,6 +406,9 @@
 }
 .bg-greyScale-grey {
   background-color: var(--algoseek-color-grayscale-gray);
+}
+.bg-greyScale-light-base {
+  background: var(--algoseek-color-bg-gray);
 }
 
 .bg-common-gradient {

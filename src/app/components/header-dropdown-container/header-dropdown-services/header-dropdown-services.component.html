@@ -1,0 +1,72 @@
+<div class="md:flex grid grid-cols-1 justify-between border-t border-[#E6E8EB] max-sm:h-[calc(100vh_-_60px)] max-sm:overflow-y-auto">
+  <!-- service overview section -->
+  <div class="bg-greyScale-light-base">
+    <div
+      class="2xl:px-20 lg:px-10 px-5 2xl:py-12 py-6 xl:w-[422px] lg:w-[350px] md:w-[250px] h-full flex flex-col gap-3 items-start"
+    >
+      <div class="desktop-heading-h5 greyScale-dark">Services</div>
+      <div class="desktop-body-text-sm greyScale-darker-grey">
+        Help data vendors increase revenue, lower risk and simplify business operation
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="flex max-[525px]:gap-4 max-[525px]:px-5 justify-between items-start self-stretch flex-1 2xl:py-12 py-6 2xl:pr-20 lg:pr-10 pr-5"
+  >
+    <!-- data engineering services section -->
+
+    <div class="flex flex-col items-center flex-1">
+      <div class="flex flex-col items-start gap-[48px]">
+        <div class="flex flex-col gap-4">
+          <div class="desktop-heading-h6 greyScale-dark">Data Engineering Services</div>
+          <ul class="flex flex-col gap-3 items-start">
+            @for (item of dataEngineeringServices; track $index) {
+              <li class="desktop-links-menu greyScale-grey">{{ item }}</li>
+            }
+          </ul>
+        </div>
+
+        <!-- software as a service section -->
+        <div class="flex flex-col gap-4">
+          <div class="desktop-heading-h6 greyScale-dark">Software As A Service</div>
+          <ul class="flex flex-col gap-3 items-start">
+            @for (item of softwareServices; track $index) {
+              <li class="desktop-links-menu greyScale-grey">{{ item }}</li>
+            }
+          </ul>
+        </div>
+
+        <!-- consulting services section -->
+        <div class="flex items-center gap-2">
+          <div class="desktop-heading-h6 greyScale-dark">Consulting Services</div>
+          <img src="assets/images/arrow-up-cross_green.svg" alt="Arrow" />
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center flex-1">
+      <div class="flex flex-col items-start gap-[48px]">
+        <!-- data solutions section -->
+        <div class="flex flex-col gap-4">
+          <div class="desktop-heading-h6 greyScale-dark">Data Infrastructure Solutions</div>
+          <ul class="flex flex-col gap-3 items-start">
+            @for (item of dataSolutions; track $index) {
+              <li class="desktop-links-menu greyScale-grey">{{ item }}</li>
+            }
+          </ul>
+        </div>
+
+        <!-- for data suppliers section -->
+        <div class="flex flex-col gap-4">
+          <div class="desktop-heading-h6 greyScale-dark">For Data Suppliers</div>
+          <ul class="flex flex-col gap-3 items-start">
+            @for (item of dataSuppliers; track $index) {
+              <li class="desktop-links-menu greyScale-grey">{{ item }}</li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

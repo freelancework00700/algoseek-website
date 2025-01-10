@@ -27,6 +27,7 @@ export interface ApiResponse<T> {
 
 @Injectable({ providedIn: 'root' })
 export class HomeService {
+  activeMenuLabel = this.createSignal<string>('');
   headerLinks = this.createSignal<HeaderLink[]>([]);
   footerLinks = this.createSignal<FooterLinks[]>([]);
   trustedPartners = this.createSignal<TrustedPartner[]>([]);
@@ -39,8 +40,8 @@ export class HomeService {
 
   realTimeData = this.createSignal<RealTimeData>({
     title: '',
-    description: '',
     subtitle: '',
+    description: '',
   });
 
   dataOfferings = this.createSignal<DataOfferings>({
@@ -48,15 +49,15 @@ export class HomeService {
     title: '',
     subtitle: '',
     description: '',
+    market_data: [],
     core_reference_data: [],
     extended_reference_data: [],
-    market_data: [],
   });
 
   algoseekConsole = this.createSignal<AlgoseekConsole>({
     title: '',
-    description: '',
     content: '',
+    description: '',
   });
 
   dataAndServices = this.createSignal<DataAndServices>({
@@ -69,9 +70,9 @@ export class HomeService {
 
   hpAlgoseekDataPackages = this.createSignal<HomeAlgoseekDataPackages>({
     title: '',
-    description: 'Data Packages',
     image: '',
     is_new: false,
+    description: 'Data Packages',
   });
 
   constructor(
@@ -192,5 +193,9 @@ export class HomeService {
 
   getFooterLinksContent(): Observable<ApiResponse<FooterLinks[]>> {
     return this.fetchData<FooterLinks>('footer_links', ['label', 'order', 'url']);
+  }
+
+  onMenuChange(menuLabel: string) {
+    this.activeMenuLabel.set(menuLabel);
   }
 }

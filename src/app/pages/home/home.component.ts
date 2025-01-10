@@ -50,6 +50,7 @@ import { CoreExtendedReferenceDataComponent } from './components/core-extended-r
   ],
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  isMenuOpen: boolean = false;
   _destroy$ = new Subject<void>();
   isHeaderVisible: boolean = true;
   previousScrollPosition: number = 0;
@@ -63,12 +64,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.homePageContentSubscriptions();
   }
 
+  get activeMenuLabel() {
+    return this.homeService.activeMenuLabel.asReadonly();
+  }
+
   @HostListener('window:scroll', [])
   onWindowScroll() {
     this.checkScrollPosition();
 
     const scrollY = window.scrollY;
-    if (scrollY > this.previousScrollPosition) {
+    if (scrollY > this.previousScrollPosition && !this.isMenuOpen && !this.activeMenuLabel()) {
       this.isHeaderVisible = false;
     } else {
       this.isHeaderVisible = true;
@@ -260,6 +265,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     const data: HomeAlgoseekConsoleIconSection = { top, middle, bottom };
     this.homeService.hpAlgoseekConsoleIcons.set(data);
+  }
+
+  onMenuStateChanged(menuState: boolean) {
+    this.isMenuOpen = menuState;
   }
 
   ngOnDestroy() {

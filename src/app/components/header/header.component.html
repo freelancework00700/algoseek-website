@@ -9,18 +9,22 @@
     <div class="hidden sm:flex items-center justify-between lg:py-[59px] md:py-[40px] py-[28px] md:pl-0 pl-2">
       @for (link of headerLinks(); track link) {
         <span class="nav-item">
-          <a class="desktop-links-nav greyScale-dark cursor-pointer">
+          <a class="desktop-links-nav greyScale-dark cursor-pointer" (mouseenter)="onMenuChange(link.label)">
             {{ link.label }}
           </a>
         </span>
       }
     </div>
 
-    @if (isMobile) {
-      <div class="sm:hidden flex justify-end items-center h-full" (click)="openMenu()">
-        <div>
+    @if (isMobile && !activeMenuLabel()) {
+      <div class="sm:hidden flex justify-end items-center h-full">
+        <div (click)="openMenu()">
           <img src="../../../assets/images/humberger_menu.svg" alt="menu" />
         </div>
+      </div>
+    } @else if (activeMenuLabel()) {
+      <div class="sm:hidden flex justify-end items-center h-full">
+        <div class="close-button" (click)="closeMenu()">✕</div>
       </div>
     }
   </div>
@@ -48,7 +52,7 @@
 
     <ul class="overlay-nav-list w-full bg-white">
       @for (link of headerLinks(); track link) {
-        <li class="py-[25px] nav-item">
+        <li class="py-[25px] nav-item" (click)="onMenuChange(link.label)">
           <a (click)="closeMenu()" class="desktop-links-nav greyScale-dark">{{ link.label }}</a>
         </li>
       }
@@ -65,3 +69,5 @@
     </div>
   </div>
 </div>
+
+<app-header-dropdown-container [class.hidden]="!activeMenuLabel()" (mouseleave)="isMobile ? '' : closeMenuForHover()" />
