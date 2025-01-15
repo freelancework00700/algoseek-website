@@ -1,0 +1,94 @@
+<app-header/>
+<div class="container">
+    <div class="overview"></div>
+    <h2 class="title">Datasets</h2>
+    <p class="description">Make better and more accurate investment and trading decisions on financial markets</p>
+
+     <div class="filter-container">
+        <div class="filter-form">
+            <mat-form-field>
+                <mat-label>Asset class:</mat-label>
+                <mat-select>
+                  <mat-option value="one">First option</mat-option>
+                  <mat-option value="two">Second option</mat-option>
+                </mat-select>
+              </mat-form-field>
+          
+            <mat-form-field >
+              <mat-label>Granularity</mat-label>
+              <mat-select [(ngModel)]="filters.granularity">
+                <mat-option value="1min">1 Min Bar</mat-option>
+                <mat-option value="5min">5 Min Bar</mat-option>
+                <mat-option value="1hour">1 Hour Bar</mat-option>
+              </mat-select>
+            </mat-form-field>
+          
+            <mat-form-field >
+              <mat-label>Vendor</mat-label>
+              <mat-select [(ngModel)]="filters.vendor">
+                <mat-option value="algoseek">algoseek</mat-option>
+                <mat-option value="vendor2">Vendor 2</mat-option>
+                <mat-option value="vendor3">Vendor 3</mat-option>
+              </mat-select>
+            </mat-form-field>
+          
+            <mat-form-field>
+              <mat-label>Region</mat-label>
+              <mat-select [(ngModel)]="filters.region">
+                <mat-option value="us">US</mat-option>
+                <mat-option value="eu">EU</mat-option>
+                <mat-option value="asia">Asia</mat-option>
+              </mat-select>
+            </mat-form-field>
+          
+            <mat-form-field>
+              <mat-label>Search datasets</mat-label>
+              <mat-select [(ngModel)]="filters.searchDataset">
+                <mat-option value="us">US</mat-option>
+                <mat-option value="global">Global</mat-option>
+              </mat-select>
+            </mat-form-field>
+          
+            <button mat-button color="warn" (click)="clearFilters()">Clear all</button>
+          </div>
+        </div>
+        <div class="card-container">
+          @for(dataset of datasets(); track $index){
+            <div class="card">  
+              <div class="title-section">
+                <img [src]="dataset.vendor_icon" alt="">
+                <h3>{{dataset.display_name}}</h3>
+              </div>
+        
+                <div class="tags">
+                    <span class="tag">{{dataset.data_group}}</span>
+                    <span class="tag">{{dataset.time_granularity}}</span>
+                    <span class="tag">{{dataset.vendor_name}}</span>
+                    <span class="tag">{{dataset.region}}</span>
+                </div>
+                <div class="details">
+                    <span><strong>Size:</strong>{{dataset.annual_size_human}} / year</span>
+                    <span><strong>Update:</strong> 
+                      {{ dataset.interval_type == 'Day' ? "Daily " + dataset.public_time +" " + dataset.public_time_timezone_name :
+                      (dataset.interval_type == 'Hour' ? "Every " + dataset.interval_value + " Hour" : '') }}
+                   
+                    </span>
+                    <span>
+                      @for(items of dataset.delivery_methods; track $index){
+                        {{items}}
+                      }
+                    </span>
+                </div>
+                <div class="description">
+                   {{dataset.long_description}}
+                </div>
+            </div>
+          }
+
+  
+      
+  
+          <!-- Repeat cards as needed -->
+        </div>
+</div>
+<app-footer/>

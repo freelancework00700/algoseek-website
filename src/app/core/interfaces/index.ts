@@ -122,3 +122,95 @@ export interface FooterLinks {
   url?: string;
   order?: number;
 }
+
+export interface CompanyTabsHeroSections{
+  id?: number;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+
+}
+
+export interface CompanyVisionDialogue{
+id: number;
+speaker: string;
+order: number;
+text: string;
+speaker_image?: any;
+}
+
+
+export interface CompanyMissionStatement {
+id: number;
+order: number;
+title: string;
+subtitle: string;
+content?: string;
+}
+export interface CompanyMissionDataChallenges {
+title: string;
+content?: string;
+}
+export interface CompanyMember {
+id: number;
+order: number;
+name: string;
+nickname?: string;
+occupation?: string;
+description?: string;
+photo?: string;
+}
+export interface CompanyOurTeamMembers{
+id?: number;
+title?: string;
+members?:CompanyMember[];
+}
+
+export interface CompanyAboutUsContent {
+title?: string;
+quote?: string;
+content?: string;
+}
+
+export interface CompanyAboutUsTransform {
+title: string;
+blocks: AboutUsTransformBlockId[];
+}
+
+export interface AboutUsTransformBlockId {
+about_us_transform_blocks_id: {
+  order: number;
+  content: string;
+};
+}
+
+export interface CompanyAboutUsYears {
+year?: number;
+order?: number;
+description?: string;
+}
+
+
+export interface GroupedLinks {
+  [key: string]: HeaderLink[];
+}
+export interface Section {
+  name: string;
+}
+
+export interface Link {
+  header_links_id: HeaderLink;
+}
+
+export interface HeaderDropDownLinks{
+  title_block: string;
+  description: string;
+  is_link: boolean;
+  section: Section;
+  links:  GroupedLinks ;
+}
+
+export interface HeaderContacts {
+  contact_info: string;
+  method: string;
+}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HomeService } from '../../../shared/services/home.service';
 
 @Component({
   selector: 'app-header-dropdown-services',
@@ -6,6 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './header-dropdown-services.component.scss',
 })
 export class HeaderDropdownServicesComponent {
+  constructor(private homeservice : HomeService ){}
+  get headerServiceLinks(){
+    return this.homeservice.headerServicesLinks.asReadonly();
+  }
   dataEngineeringServices: string[] = [
     'Data Onboarding',
     'Data Customization',

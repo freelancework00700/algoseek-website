@@ -15,6 +15,8 @@ import {
   HomeAlgoseekDataPackages,
   HomeAlgoseekConsoleIconSection,
   HomeAlgoseekDataPackagesItem,
+  HeaderDropDownLinks,
+  HeaderContacts,
 } from '../../core/interfaces';
 import { Observable } from 'rxjs';
 import { Injectable, signal } from '@angular/core';
@@ -37,7 +39,7 @@ export class HomeService {
   hpAlgoseekConsoleIcons = this.createSignal<HomeAlgoseekConsoleIconSection>({});
   useCases = this.createSignal<UseCases>({ title: '', images: [], subtitle: '' });
   hpAlgoseekDataPackagesItem = this.createSignal<HomeAlgoseekDataPackagesItem[]>([]);
-
+  headerContacts = this.createSignal<HeaderContacts[]>([]);
   realTimeData = this.createSignal<RealTimeData>({
     title: '',
     subtitle: '',
@@ -73,6 +75,28 @@ export class HomeService {
     image: '',
     is_new: false,
     description: 'Data Packages',
+  });
+
+  HeaderDropDownLinks = this.createSignal<HeaderDropDownLinks>({
+    title_block: 'Data',
+    is_link: false,
+    links: {},
+    description: '',
+    section: { name: 'Data' },
+  });
+  headerServicesLinks = this.createSignal<HeaderDropDownLinks>({
+    title_block: 'Services',
+    is_link: false,
+    links: {},
+    description: '',
+    section: { name: 'Services' },
+  });
+  headerCompanyLinks = this.createSignal<HeaderDropDownLinks>({
+    title_block: 'Company',
+    is_link: false,
+    links: {},
+    description: '',
+    section: { name: 'Company' },
   });
 
   constructor(
@@ -123,6 +147,72 @@ export class HomeService {
     );
   }
 
+  getHeaderDataLinks(): Observable<ApiResponse<HeaderDropDownLinks[]>> {
+    return this.fetchData<HeaderDropDownLinks>(
+      'header',
+      [
+        'title_block',
+        'description',
+        'is_link',
+        'section.name',
+        'links.header_links_id.label',
+        'links.header_links_id.section',
+        'links.header_links_id.order',
+        'links.header_links_id.url',
+      ],
+      [
+        {
+          key: ['section', 'name', '_eq'],
+          value: 'Data',
+        },
+      ],
+    );
+  }
+  getHeaderServiceLinks(): Observable<ApiResponse<HeaderDropDownLinks[]>> {
+    return this.fetchData<HeaderDropDownLinks>(
+      'header',
+      [
+        'title_block',
+        'description',
+        'is_link',
+        'section.name',
+        'links.header_links_id.label',
+        'links.header_links_id.section',
+        'links.header_links_id.order',
+        'links.header_links_id.url',
+      ],
+      [
+        {
+          key: ['section', 'name', '_eq'],
+          value: 'Services',
+        },
+      ],
+    );
+  }
+  getHeaderCompanyLinks(): Observable<ApiResponse<HeaderDropDownLinks[]>> {
+    return this.fetchData<HeaderDropDownLinks>(
+      'header',
+      [
+        'title_block',
+        'description',
+        'is_link',
+        'section.name',
+        'links.header_links_id.label',
+        'links.header_links_id.section',
+        'links.header_links_id.order',
+        'links.header_links_id.url',
+      ],
+      [
+        {
+          key: ['section', 'name', '_eq'],
+          value: 'Company',
+        },
+      ],
+    );
+  }
+  getHeaderContacts(): Observable<ApiResponse<HeaderContacts[]>> {
+    return this.fetchData<HeaderContacts>('contacts', ['method','contact_info']);
+  }
   getHeroSliderContent(): Observable<ApiResponse<HomePageHeroSlider[]>> {
     return this.fetchData<HomePageHeroSlider>('slider', ['id', 'title', 'subtitle', 'order', 'description']);
   }

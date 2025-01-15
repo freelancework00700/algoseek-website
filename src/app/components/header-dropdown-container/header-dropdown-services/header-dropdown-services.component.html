@@ -4,9 +4,9 @@
     <div
       class="2xl:px-20 lg:px-10 px-5 2xl:py-12 py-6 xl:w-[422px] lg:w-[350px] md:w-[250px] h-full flex flex-col gap-3 items-start"
     >
-      <div class="desktop-heading-h5 greyScale-dark">Services</div>
+      <div class="desktop-heading-h5 greyScale-dark">{{headerServiceLinks().section.name}}</div>
       <div class="desktop-body-text-sm greyScale-darker-grey">
-        Help data vendors increase revenue, lower risk and simplify business operation
+       {{headerServiceLinks().description}}
       </div>
     </div>
   </div>
@@ -22,7 +22,7 @@
           <div class="desktop-heading-h6 greyScale-dark">Data Engineering Services</div>
           <ul class="flex flex-col gap-3 items-start">
             @for (item of dataEngineeringServices; track $index) {
-              <li class="desktop-links-menu greyScale-grey">{{ item }}</li>
+              <li class="desktop-links-menu  greyScale-darker-grey cursor-pointer">{{ item }}</li>
             }
           </ul>
         </div>
@@ -32,14 +32,14 @@
           <div class="desktop-heading-h6 greyScale-dark">Software As A Service</div>
           <ul class="flex flex-col gap-3 items-start">
             @for (item of softwareServices; track $index) {
-              <li class="desktop-links-menu greyScale-grey">{{ item }}</li>
+              <li class="desktop-links-menu  greyScale-darker-grey cursor-pointer">{{ item }}</li>
             }
           </ul>
         </div>
 
         <!-- consulting services section -->
         <div class="flex items-center gap-2">
-          <div class="desktop-heading-h6 greyScale-dark">Consulting Services</div>
+          <div class="desktop-heading-h6 greyScale-dark cursor-pointer">Consulting Services</div>
           <img src="assets/images/arrow-up-cross_green.svg" alt="Arrow" />
         </div>
       </div>
@@ -52,7 +52,7 @@
           <div class="desktop-heading-h6 greyScale-dark">Data Infrastructure Solutions</div>
           <ul class="flex flex-col gap-3 items-start">
             @for (item of dataSolutions; track $index) {
-              <li class="desktop-links-menu greyScale-grey">{{ item }}</li>
+              <li class="desktop-links-menu  greyScale-darker-grey cursor-pointer">{{ item }}</li>
             }
           </ul>
         </div>
@@ -62,7 +62,7 @@
           <div class="desktop-heading-h6 greyScale-dark">For Data Suppliers</div>
           <ul class="flex flex-col gap-3 items-start">
             @for (item of dataSuppliers; track $index) {
-              <li class="desktop-links-menu greyScale-grey">{{ item }}</li>
+              <li class="desktop-links-menu  greyScale-darker-grey cursor-pointer">{{ item }}</li>
             }
           </ul>
         </div>

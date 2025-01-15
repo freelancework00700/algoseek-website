@@ -1,0 +1,45 @@
+<div class="h-[600px] relative overflow-hidden flex items-center pl-[80px]">
+  <div class="absolute inset-0 bg-our-mission-gradient z-10"></div>
+
+  <div class="flex flex-col justify-center items-start max-w-[50%] z-20">
+    <h5 class="desktop-heading-h5 accent-green mb-2">{{ ourMissionHeroContent().subtitle }}</h5>
+    <h2 class="desktop-heading-h2 mb-2">{{ ourMissionHeroContent().title }}</h2>
+    <p class="desktop-body-text greyScale-darker-grey">{{ ourMissionHeroContent().description }}</p>
+  </div>
+
+  <img
+    src="assets/images/our-mission-header.png"
+    alt="Our Mission"
+    class="absolute inset-0 h-full w-full object-cover z-0"
+  />
+</div>
+
+<div class="mx-auto py-[80px] px-[16px] sm:px-[32px] md:px-[48px] lg:px-[200px]">
+  <p class="desktop-body-text greyScale-dark-grey mb-[48px]">
+    At algoseek, we deal with the complexities of extracting, transforming and managing data for data consumers and
+    suppliers in the financial industry, empowering our clientsto focus on value creation, not data housekeeping
+  </p>
+  <h3 class="text-left desktop-heading-h3 greyScale-black mb-[24px]">Shifting Landscape of Financial Data</h3>
+      <p class="desktop-body-text greyScale-dark-grey mb-[48px]">
+    Technological and regulationary shifts are continually reforming and refining business practices. Below are the
+    trends in financial data and trading that we are already observing or anticipate unfolding shortly:
+  </p>
+  @for (statement of ourMissionStatementContent(); track statement) {
+    <div class="mb-[48px]">
+      <h5 class="desktop-heading-h5 text-left greyScale-black mb-[12px]">
+        {{ statement.title }}
+      </h5>
+      <p class="desktop-body-text greyScale-dark-grey">
+        {{ statement.content }}
+      </p>
+    </div>
+  }
+</div>
+
+<div class="mx-auto py-[80px] bg-gray px-[16px] sm:px-[32px] md:px-[48px] lg:px-[200px]">
+    <h3 class="text-left desktop-heading-h3 greyScale-black mb-[24px] ">
+      {{ ourMissionDataChallengesContent().title }}
+    </h3>
+    <p class="desktop-body-text greyScale-dark-grey" [innerHTML]="ourMissionDataChallengesContent().content"></p>
+  </div>
+  

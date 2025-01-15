@@ -4,29 +4,29 @@
   <div class="flex sm:items-start items-center max-sm:flex-col gap-4 flex-1">
     <div class="flex justify-center items-center gap-2 flex-1">
       <div class="flex flex-col justify-center sm:items-start items-center">
-        <div class="desktop-body-tooltip greyScale-grey">Sales Phone</div>
-        <div class="desktop-heading-h6 greyScale-dark whitespace-nowrap">+1 646 583 1832</div>
+        <div class="desktop-body-tooltip greyScale-darker-grey">Sales Phone</div>
+        <div class="desktop-heading-h6 greyScale-dark whitespace-nowrap">{{ headerContacts()[0].contact_info }}</div>
       </div>
     </div>
 
     <div class="flex justify-center items-center gap-2 flex-1">
       <div class="flex flex-col justify-center sm:items-start items-center">
-        <div class="desktop-body-tooltip greyScale-grey">Sales Email</div>
-        <div class="desktop-heading-h6 greyScale-dark whitespace-nowrap">sales&#64;algoseek.com</div>
+        <div class="desktop-body-tooltip greyScale-darker-grey">Sales Email</div>
+        <div class="desktop-heading-h6 greyScale-dark whitespace-nowrap">{{ headerContacts()[1].contact_info }}</div>
       </div>
     </div>
 
     <div class="flex justify-center items-center gap-2 flex-1">
       <div class="flex flex-col justify-center sm:items-start items-center">
-        <div class="desktop-body-tooltip greyScale-grey">Support Phone</div>
-        <div class="desktop-heading-h6 greyScale-dark whitespace-nowrap">+1 646 583 1832</div>
+        <div class="desktop-body-tooltip greyScale-darker-grey">Support Phone</div>
+        <div class="desktop-heading-h6 greyScale-dark whitespace-nowrap">{{ headerContacts()[3].contact_info }}</div>
       </div>
     </div>
     
     <div class="flex justify-center items-center gap-2 flex-1">
       <div class="flex flex-col justify-center sm:items-start items-center">
-        <div class="desktop-body-tooltip greyScale-grey">Support Email</div>
-        <div class="desktop-heading-h6 greyScale-dark whitespace-nowrap">support&#64;algoseek.com</div>
+        <div class="desktop-body-tooltip greyScale-darker-grey">Support Email</div>
+        <div class="desktop-heading-h6 greyScale-dark whitespace-nowrap">{{ headerContacts()[2].contact_info }}</div>
       </div>
     </div>
   </div>

@@ -1,0 +1,20 @@
+<app-header class="fixed top-0 left-0 w-full bg-white z-[1111] transform transition-transform duration-500 ease-in-out"></app-header>
+ <div >
+  <div [class.blur-bg]="activeMenuLabel()"></div>
+   <mat-tab-group disableRipple class="w-[1600px] mx-auto mt-[150px]">
+     <mat-tab label="Our vision">
+       <company-our-vision></company-our-vision>
+     </mat-tab>
+     <mat-tab label="Our mission">
+       <company-our-mission></company-our-mission>
+     </mat-tab>
+     <mat-tab label="Our team ">
+       <company-our-team></company-our-team>
+     </mat-tab>
+     <mat-tab label="About us">
+       <company-about-us></company-about-us>
+     </mat-tab>
+   </mat-tab-group>
+   <app-footer></app-footer>
+ </div>
+ 

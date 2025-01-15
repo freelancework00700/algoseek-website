@@ -3,6 +3,8 @@ import {
   HomePageStatsNumber,
   HomeAlgoseekConsoleIcon,
   HomeAlgoseekConsoleIconSection,
+  GroupedLinks,
+  Link,
 } from '../../core/interfaces';
 import { Subject, takeUntil } from 'rxjs';
 import { HomeService } from '../../shared/services/home.service';
@@ -219,6 +221,52 @@ export class HomeComponent implements OnInit, OnDestroy {
         next: (response) => this.homeService.footerLinks.set(response.data),
         error: (error) => console.error('Error in getFooterLinksContent:', error),
       });
+
+    // 15. call HeaderDropDownLinks and set the data when it completes
+    this.homeService
+      .getHeaderDataLinks()
+      .pipe(takeUntil(this._destroy$))
+      .subscribe({
+        next: (response) => {
+          const data = response.data[0];
+          data.links = this.transformLinks(response.data[0]);
+          this.homeService.HeaderDropDownLinks.set(data);
+        },
+        error: (error) => console.error('Error in getFooterLinksContent:', error),
+      });
+
+      // 16. call HeaderServiceLinks and set the data when it completes
+      this.homeService
+       .getHeaderServiceLinks()
+       .pipe(takeUntil(this._destroy$))
+       .subscribe({
+          next: (response) => {
+            this.homeService.headerServicesLinks.set(response.data[0]);
+          },
+          error: (error) => console.error('Error in getHeaderServiceLinks:', error),
+        });
+
+      // 17. call HeaderServiceLinks and set the data when it completes
+      this.homeService
+       .getHeaderCompanyLinks()
+       .pipe(takeUntil(this._destroy$))
+       .subscribe({
+          next: (response) => {
+            this.homeService.headerCompanyLinks.set(response.data[0]);
+          },
+          error: (error) => console.error('Error in getHeaderCompanyLinks:', error),
+        });
+    
+        // 18. call HeaderContacts and set the data when it completes
+      this.homeService
+       .getHeaderContacts()
+       .pipe(takeUntil(this._destroy$))
+       .subscribe({
+          next: (response) => {
+            this.homeService.headerContacts.set(response.data);
+          },
+          error: (error) => console.error('Error in getHeaderContacts :', error),
+        });
   }
 
   // function to set home stats numbers
@@ -265,6 +313,24 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     const data: HomeAlgoseekConsoleIconSection = { top, middle, bottom };
     this.homeService.hpAlgoseekConsoleIcons.set(data);
+  }
+
+  //function to tranform links
+  private transformLinks(response :any): GroupedLinks {
+    const groupedLinks: GroupedLinks = {};
+    let currentKey: string | null = null;
+    (response.links as Link[]).forEach((linkObj: Link) => {
+      const link = linkObj.header_links_id;
+      if (link.order === 0) {
+        currentKey = link.label.toLowerCase().replace(/\s+/g, '_');
+        groupedLinks[currentKey] = [];
+      }
+      if (currentKey) {
+        groupedLinks[currentKey].push(link);
+      }
+    });
+    console.log('groupedLinks: ', groupedLinks);
+    return groupedLinks;
   }
 
   onMenuStateChanged(menuState: boolean) {

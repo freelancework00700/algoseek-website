@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { HomeService } from '../../shared/services/home.service';
 import { Component, EventEmitter, HostListener, OnInit, Output, Renderer2 } from '@angular/core';
 import { HeaderDropdownContainerComponent } from '../header-dropdown-container/header-dropdown-container.component';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-header',
   styleUrl: './header.component.scss',
   templateUrl: './header.component.html',
-  imports: [CommonModule, HeaderDropdownContainerComponent],
+  imports: [CommonModule, HeaderDropdownContainerComponent , RouterLink],
 })
 export class HeaderComponent implements OnInit {
   menuOpen: boolean = false;

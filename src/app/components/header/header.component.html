@@ -9,7 +9,8 @@
     <div class="hidden sm:flex items-center justify-between lg:py-[59px] md:py-[40px] py-[28px] md:pl-0 pl-2">
       @for (link of headerLinks(); track link) {
         <span class="nav-item">
-          <a class="desktop-links-nav greyScale-dark cursor-pointer" (mouseenter)="onMenuChange(link.label)">
+          <a class="desktop-links-nav greyScale-dark cursor-pointer" (mouseenter)="onMenuChange(link.label)"
+          [routerLink]="['/' + link.label.toLowerCase()]">
             {{ link.label }}
           </a>
         </span>
